@@ -8,6 +8,6 @@ RUN npm run build --prod
 
 # Estágio de produção
 FROM nginx:alpine
-COPY --from=build /app/dist/ARtic-frontend /usr/share/nginx/html
+COPY --from=build /app/dist/artic-frontend /usr/share/nginx/html
 COPY nginx-custom.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
