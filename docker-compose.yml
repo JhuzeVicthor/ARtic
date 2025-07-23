@@ -7,8 +7,8 @@ services:
       - "8080:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/artic
-      - SPRING_DATASOURCE_USERNAME= artic
-      - SPRING_DATASOURCE_PASSWORD= artic
+      - SPRING_DATASOURCE_USERNAME=artic
+      - SPRING_DATASOURCE_PASSWORD=artic
     depends_on:
       - db
 
@@ -24,9 +24,9 @@ services:
     restart: always
     container_name: postgres-artic
     environment:
-      - POSTGRES_DB= artic
-      - POSTGRES_USER= artic
-      - POSTGRES_PASSWORD= artic
+      - POSTGRES_DB=artic
+      - POSTGRES_USER=artic
+      - POSTGRES_PASSWORD=artic
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
