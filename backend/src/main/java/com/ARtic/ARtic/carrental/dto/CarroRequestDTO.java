@@ -4,12 +4,11 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.apache.logging.log4j.message.Message;
 
 import java.math.BigDecimal;
 
 @Data
-public class CarroDTO {
+public class CarroRequestDTO {
 
     @NotBlank(message = "Marca é obrigatória")
     private String marca;
