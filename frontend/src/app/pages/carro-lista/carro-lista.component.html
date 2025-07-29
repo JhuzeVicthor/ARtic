@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Lista de Carros</h2>
+
+  <div *ngIf="carros.length === 0">
+    <p>Nenhum carro cadastrado. Adicione um novo carro!</p>
+  </div>
+
+  <div class="car-list" *ngIf="carros.length > 0">
+    <div class="car-card" *ngFor="let carro of carros">
+      <img [src]="carro.urlImagem || 'https://via.placeholder.com/150x100?text=Sem+Imagem'" alt="{{ carro.marca }} {{ carro.modelo }}">
+      <div class="car-details">
+        <h3>{{ carro.marca }} {{ carro.modelo }} ({{ carro.ano }})</h3>
+        <p>Cor: {{ carro.cor }} | Placa: {{ carro.placa }}</p>
+        <p>Preço Aluguel/Dia: R$ {{ carro.precoAluguelPorDia | number:'1.2-2' }}</p>
+        <p>Preço Venda: R$ {{ carro.precoVenda | number:'1.2-2' }}</p>
+        <p>Disponível para Aluguel: {{ carro.disponivelParaAluguel ? 'Sim' : 'Não' }}</p>
+        <p>Disponível para Venda: {{ carro.disponivelParaVenda ? 'Sim' : 'Não' }}</p>
+        <button class="edit-btn" [routerLink]="['/carros/editar', carro.id]">Editar</button>
+        <button class="delete-btn" (click)="deleteCarro(carro.id)">Deletar</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="add-btn" (click)="addNewCarro()">Adicionar Novo Carro</button>
+</div>
