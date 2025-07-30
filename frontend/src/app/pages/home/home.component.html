@@ -1,0 +1,100 @@
+<div class="home-page">
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Alugue ou Compre seu Carro dos Sonhos</h1>
+      <p>A melhor plataforma para encontrar o veículo perfeito para você</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" (click)="alugarAgora()"><i class="fas fa-key"></i> Alugar Agora</button>
+        <button class="btn btn-secondary" (click)="comprarAgora()"><i class="fas fa-shopping-cart"></i> Comprar Agora</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="search-filter-section">
+    <div class="search-filter-container">
+      <h3>Encontre seu Veículo Ideal</h3>
+      <div class="filter-group">
+        <select class="form-control" [(ngModel)]="tipoServico">
+          <option value="">Tipo de Serviço</option>
+          <option value="aluguel">Aluguel</option>
+          <option value="compra">Compra</option>
+        </select>
+        <select class="form-control" [(ngModel)]="marca">
+          <option value="">Marca</option>
+          <option value="toyota">Toyota</option>
+          <option value="honda">Honda</option>
+          <option value="bmw">BMW</option>
+        </select>
+        <select class="form-control" [(ngModel)]="categoria">
+          <option value="">Categoria</option>
+          <option value="suv">SUV</option>
+          <option value="sedan">Sedan</option>
+          <option value="hatch">Hatch</option>
+        </select>
+        <button class="btn btn-search" (click)="buscarVeiculo()">Buscar</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-cars-section">
+    <h2>Carros em Destaque para Aluguel</h2>
+    <p>Veículos selecionados com as melhores condições e preços</p>
+    <div class="car-cards-grid">
+      <div class="car-card" *ngFor="let carro of carrosDestaqueAluguel">
+        <span class="status-tag available">{{ carro.status }}</span>
+        <div class="car-image-placeholder"></div>
+        <h3>{{ carro.nome }}</h3>
+        <div class="car-features">
+          <span *ngFor="let feature of carro.caracteristicas">{{ feature }}</span>
+        </div>
+        <div class="car-price">
+          R$ {{ carro.preco | number:'1.2-2' }}/dia
+          <span class="rating">{{ carro.rating }} <i class="fas fa-star"></i></span>
+        </div>
+        <button class="btn btn-details">Ver Detalhes</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="for-sale-cars-section">
+    <h2>Carros à Venda</h2>
+    <p>Encontre o carro perfeito para chamar de seu</p>
+    <div class="car-cards-grid">
+      <div class="car-card" *ngFor="let carro of carrosAVenda">
+        <span class="status-tag for-sale">{{ carro.status }}</span>
+        <div class="car-image-placeholder"></div>
+        <h3>{{ carro.nome }}</h3>
+        <div class="car-features">
+          <span>{{ carro.ano }}</span>
+          <span>{{ carro.km }}</span>
+          <span *ngFor="let feature of carro.caracteristicas">{{ feature }}</span>
+        </div>
+        <div class="car-price">
+          R$ {{ carro.preco | number:'1.2-2' }}
+        </div>
+        <button class="btn btn-details">Ver Detalhes</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-choose-us-section">
+    <h2>Por que escolher a ARtic?</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <i class="feature-icon fas fa-truck"></i>
+        <h3>Frota Moderna</h3>
+        <p>Veículos novos e bem conservados, revisados regularmente</p>
+      </div>
+      <div class="feature-item">
+        <i class="feature-icon fas fa-dollar-sign"></i>
+        <h3>Preços Justos</h3>
+        <p>Valores competitivos e transparentes, sem taxas ocultas</p>
+      </div>
+      <div class="feature-item">
+        <i class="feature-icon fas fa-headset"></i>
+        <h3>Atendimento 24h</h3>
+        <p>Suporte completo a qualquer hora do dia ou da noite</p>
+      </div>
+    </div>
+  </section>
+</div>

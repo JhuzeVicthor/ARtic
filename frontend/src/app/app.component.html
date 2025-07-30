@@ -1,12 +1,59 @@
-<header>
-  <h1>ARtic</h1>
-  <nav>
-    <a routerLink="/carros">Carros Disponíveis</a>
-  </nav>
+<header class="main-header">
+  <div class="header-content">
+    <div class="logo">
+      <img src="assets/ARtic-logo.png" alt="ARtic Logo" class="logo-image"> <span>ARtic</span>
+    </div>
+    <nav class="main-nav">
+      <a routerLink="/">Início</a>
+      <a routerLink="/aluguel">Aluguel</a>
+      <a routerLink="/compra">Compra</a>
+      <a routerLink="/sobre">Sobre</a>
+      <a routerLink="/contato">Contato</a>
+    </nav>
+    <div class="auth-buttons">
+      <button class="btn btn-login" routerLink="/login">Login</button>
+      <button class="btn btn-register" routerLink="/cadastrar">Cadastrar</button>
+    </div>
+  </div>
 </header>
-<main>
-  <router-outlet></router-outlet>
-</main>
-<footer>
-  <p>&copy; 2025 ARtic. Todos os direitos reservados.</p>
+
+<main class="main-content">
+  <router-outlet></router-outlet> </main>
+
+<footer class="main-footer">
+  <div class="footer-grid">
+    <div class="footer-section company-info">
+      <div class="logo">
+        <img src="assets/ARtic-logo-white.png" alt="ARtic Logo" class="logo-image"> <span>ARtic</span>
+      </div>
+      <p>Sua melhor escolha para aluguel e compra de veículos.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Serviços</h3>
+      <ul>
+        <li><a href="#">Aluguel de Carros</a></li>
+        <li><a href="#">Venda de Carros</a></li>
+        <li><a href="#">Financiamento</a></li>
+        <li><a href="#">Seguro</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Empresa</h3>
+      <ul>
+        <li><a href="#">Sobre Nós</a></li>
+        <li><a href="#">Carreiras</a></li>
+        <li><a href="#">Imprensa</a></li>
+        <li><a href="#">Parceiros</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Contato</h3>
+      <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+      <p><i class="fas fa-envelope"></i> contato.com.br</p>
+      <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 ARtic. Todos os direitos reservados.</p>
+  </div>
 </footer>

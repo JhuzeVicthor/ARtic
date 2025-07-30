@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5efb3c27-692d-424f-b65a-84ebe7b951bd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/dto/CarroRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/dto/CarroRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/dto/CarroResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/dto/CarroResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/model/Carro.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/model/Carro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/interface/carro.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/interface/carro.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-form/carro-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-form/carro-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-form/carro-form.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-form/carro-form.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-form/carro-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-form/carro-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-lista/carro-lista.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-lista/carro-lista.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-lista/carro-lista.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-lista/carro-lista.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/carro.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/carro.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +115,7 @@
       <workItem from="1753797962633" duration="2272000" />
       <workItem from="1753805380265" duration="5000" />
       <workItem from="1753805414482" duration="10004000" />
-      <workItem from="1753889655566" duration="3078000" />
+      <workItem from="1753889655566" duration="4345000" />
     </task>
     <servers />
   </component>
