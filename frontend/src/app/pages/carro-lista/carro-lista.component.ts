@@ -11,7 +11,7 @@ import {CommonModule, CurrencyPipe, NgFor, NgIf} from '@angular/common';
   standalone: true,
   imports: [CommonModule, NgIf, NgFor, CurrencyPipe, RouterLink],
   templateUrl: './carro-lista.component.html',
-  styleUrls: ['./carro-lista.component.css']
+  styleUrls: ['./carro-lista.component.scss']
 })
 export class CarroListaComponent implements OnInit {
 

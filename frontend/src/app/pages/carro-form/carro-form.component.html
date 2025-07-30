@@ -1,0 +1,115 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Editar Carro' : 'Adicionar Novo Carro' }}</h2>
+
+  <form [formGroup]="carroForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="marca">Marca:</label>
+      <input id="marca" type="text" formControlName="marca" class="form-control"
+             [ngClass]="{ 'is-invalid': f['marca'].invalid && f['marca'].touched }">
+      <div *ngIf="f['marca'].invalid && f['marca'].touched" class="invalid-feedback">
+        <div *ngIf="f['marca'].errors?.['required']">Marca é obrigatória.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="modelo">Modelo:</label>
+      <input id="modelo" type="text" formControlName="modelo" class="form-control"
+             [ngClass]="{ 'is-invalid': f['modelo'].invalid && f['modelo'].touched }">
+      <div *ngIf="f['modelo'].invalid && f['modelo'].touched" class="invalid-feedback">
+        <div *ngIf="f['modelo'].errors?.['required']">Modelo é obrigatório.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="ano">Ano:</label>
+      <input id="ano" type="number" formControlName="ano" class="form-control"
+             [ngClass]="{ 'is-invalid': f['ano'].invalid && f['ano'].touched }">
+      <div *ngIf="f['ano'].invalid && f['ano'].touched" class="invalid-feedback">
+        <div *ngIf="f['ano'].errors?.['required']">Ano é obrigatório.</div>
+        <div *ngIf="f['ano'].errors?.['min']">Ano inválido (mínimo 1900).</div>
+        <div *ngIf="f['ano'].errors?.['max']">Ano inválido (máximo {{ new Date().getFullYear() + 1 }}).</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cor">Cor:</label>
+      <input id="cor" type="text" formControlName="cor" class="form-control"
+             [ngClass]="{ 'is-invalid': f['cor'].invalid && f['cor'].touched }">
+      <div *ngIf="f['cor'].invalid && f['cor'].touched" class="invalid-feedback">
+        <div *ngIf="f['cor'].errors?.['required']">Cor é obrigatória.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="placa">Placa:</label>
+      <input id="placa" type="text" formControlName="placa" class="form-control"
+             [ngClass]="{ 'is-invalid': f['placa'].invalid && f['placa'].touched }">
+      <div *ngIf="f['placa'].invalid && f['placa'].touched" class="invalid-feedback">
+        <div *ngIf="f['placa'].errors?.['required']">Placa é obrigatória.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="tipoCombustivel">Tipo de Combustível:</label>
+      <input id="tipoCombustivel" type="text" formControlName="tipoCombustivel" class="form-control"
+             [ngClass]="{ 'is-invalid': f['tipoCombustivel'].invalid && f['tipoCombustivel'].touched }">
+      <div *ngIf="f['tipoCombustivel'].invalid && f['tipoCombustivel'].touched" class="invalid-feedback">
+        <div *ngIf="f['tipoCombustivel'].errors?.['required']">Tipo de combustível é obrigatório.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="portas">Portas:</label>
+      <input id="portas" type="number" formControlName="portas" class="form-control"
+             [ngClass]="{ 'is-invalid': f['portas'].invalid && f['portas'].touched }">
+      <div *ngIf="f['portas'].invalid && f['portas'].touched" class="invalid-feedback">
+        <div *ngIf="f['portas'].errors?.['required']">Número de portas é obrigatório.</div>
+        <div *ngIf="f['portas'].errors?.['min']">Mínimo de 2 portas.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="precoAluguelPorDia">Preço Aluguel por Dia:</label>
+      <input id="precoAluguelPorDia" type="number" step="0.01" formControlName="precoAluguelPorDia" class="form-control"
+             [ngClass]="{ 'is-invalid': f['precoAluguelPorDia'].invalid && f['precoAluguelPorDia'].touched }">
+      <div *ngIf="f['precoAluguelPorDia'].invalid && f['precoAluguelPorDia'].touched" class="invalid-feedback">
+        <div *ngIf="f['precoAluguelPorDia'].errors?.['required']">Preço de aluguel é obrigatório.</div>
+        <div *ngIf="f['precoAluguelPorDia'].errors?.['min']">Preço de aluguel não pode ser negativo.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="precoVenda">Preço de Venda:</label>
+      <input id="precoVenda" type="number" step="0.01" formControlName="precoVenda" class="form-control"
+             [ngClass]="{ 'is-invalid': f['precoVenda'].invalid && f['precoVenda'].touched }">
+      <div *ngIf="f['precoVenda'].invalid && f['precoVenda'].touched" class="invalid-feedback">
+        <div *ngIf="f['precoVenda'].errors?.['required']">Preço de venda é obrigatório.</div>
+        <div *ngIf="f['precoVenda'].errors?.['min']">Preço de venda não pode ser negativo.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="urlImagem">URL da Imagem:</label>
+      <input id="urlImagem" type="text" formControlName="urlImagem" class="form-control">
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input id="disponivelParaAluguel" type="checkbox" formControlName="disponivelParaAluguel">
+      <label for="disponivelParaAluguel">Disponível para Aluguel</label>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input id="disponivelParaVenda" type="checkbox" formControlName="disponivelParaVenda">
+      <label for="disponivelParaVenda">Disponível para Venda</label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="carroForm.invalid" class="submit-btn">
+        {{ isEditMode ? 'Atualizar Carro' : 'Adicionar Carro' }}
+      </button>
+      <button type="button" (click)="onCancel()" class="cancel-btn">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
