@@ -29,7 +29,7 @@ export class CarroService {
     return this.http.put<Carro>(`${this.apiUrl}/${id}`, carro);
   }
 
-  deleteCarro(id: number):  Observable<Carro> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  deleteCarro(id: number):  Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

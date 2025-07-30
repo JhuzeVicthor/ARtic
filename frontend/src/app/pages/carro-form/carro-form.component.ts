@@ -29,7 +29,9 @@ export class CarroFormComponent implements OnInit {
     private carroService: CarroService,
     private router: Router,
     private route: ActivatedRoute,
-  ) {}
+  ) {
+    this.carroForm = this.fb.group({});
+  }
 
   ngOnInit() {
     this.carroForm = this.fb.group({
@@ -40,15 +42,15 @@ export class CarroFormComponent implements OnInit {
       placa: ['', Validators.required],
       tipoCombustivel: ['', Validators.required],
       portas: ['', Validators.required, Validators.min(2)],
-      preçoAluguelPorDia: ['', Validators.required, Validators.min(0)],
-      preçoVenda: ['', Validators.required, Validators.min(0)],
+      precoAluguelPorDia: ['', Validators.required, Validators.min(0)],
+      precoVenda: ['', Validators.required, Validators.min(0)],
       urlImagem: [''],
       disponivelParaAluguel: [true],
       disponivelParaVenda: [true],
     });
 
     this.route.paramMap.subscribe(params => {
-      const id = +params['id'];
+      const id = params.get('id');
       if (id) {
         this.isEditMode = true;
         this.carroId = +id;

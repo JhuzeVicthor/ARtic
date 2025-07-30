@@ -32,11 +32,11 @@ public class CarroRequestDTO {
 
     @NotNull(message = "Preço de aluguel por dia é obrigatório")
     @Min(value = 0, message = "Preço de aluguel não pode ser negativo")
-    private BigDecimal preçoAluguelPorDia;
+    private BigDecimal precoAluguelPorDia;
 
     @NotNull(message = "Preço de venda é obrigatório")
     @Min(value = 0, message = "Preço de venda não pode ser negativo")
-    private BigDecimal preçoVenda;
+    private BigDecimal precoVenda;
 
     private String urlImagem;
 

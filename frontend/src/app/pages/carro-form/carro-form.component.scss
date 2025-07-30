@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .container {
   max-width: 800px;
   margin: 20px auto;
@@ -89,7 +91,7 @@
     color: #ffffff;
 
     &:hover:not([disabled]) {
-      background-color: darken(#800000, 10%);
+      background-color: color.adjust(#800000, $lightness: -10%);
     }
 
     &[disabled] {
@@ -103,7 +105,7 @@
     color: #ffffff;
 
     &:hover {
-      background-color: darken(#6c757d, 10%);
+      background-color: color.adjust(#800000, $lightness: -10%);
     }
   }
 }

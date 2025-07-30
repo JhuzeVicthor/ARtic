@@ -14,8 +14,8 @@ public class CarroResponseDTO {
     private String placa;
     private String tipoCombustivel;
     private Integer portas;
-    private BigDecimal preçoAluguelPorDia;
-    private BigDecimal preçoVenda;
+    private BigDecimal precoAluguelPorDia;
+    private BigDecimal precoVenda;
     private String urlImagem;
     private Boolean disponivelParaAluguel;
     private Boolean disponivelParaVenda;

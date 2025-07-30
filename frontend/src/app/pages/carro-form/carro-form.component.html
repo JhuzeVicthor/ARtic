@@ -27,7 +27,7 @@
       <div *ngIf="f['ano'].invalid && f['ano'].touched" class="invalid-feedback">
         <div *ngIf="f['ano'].errors?.['required']">Ano é obrigatório.</div>
         <div *ngIf="f['ano'].errors?.['min']">Ano inválido (mínimo 1900).</div>
-        <div *ngIf="f['ano'].errors?.['max']">Ano inválido (máximo {{ new Date().getFullYear() + 1 }}).</div>
+        <div *ngIf="f['ano'].errors?.['max']">Ano inválido (máximo {{ currentYear + 1 }}).</div>
       </div>
     </div>
 

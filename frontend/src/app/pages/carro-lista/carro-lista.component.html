@@ -11,8 +11,8 @@
       <div class="car-details">
         <h3>{{ carro.marca }} {{ carro.modelo }} ({{ carro.ano }})</h3>
         <p>Cor: {{ carro.cor }} | Placa: {{ carro.placa }}</p>
-        <p>Preço Aluguel/Dia: R$ {{ carro.precoAluguelPorDia | number:'1.2-2' }}</p>
-        <p>Preço Venda: R$ {{ carro.precoVenda | number:'1.2-2' }}</p>
+        <p>Preço Aluguel/Dia: {{ carro.precoAluguelPorDia | currency:'BRL':'symbol':'1.2-2' }}</p>
+        <p>Preço Venda: {{ carro.precoVenda | currency:'BRL':'symbol':'1.2-2' }}</p>
         <p>Disponível para Aluguel: {{ carro.disponivelParaAluguel ? 'Sim' : 'Não' }}</p>
         <p>Disponível para Venda: {{ carro.disponivelParaVenda ? 'Sim' : 'Não' }}</p>
         <button class="edit-btn" [routerLink]="['/carros/editar', carro.id]">Editar</button>

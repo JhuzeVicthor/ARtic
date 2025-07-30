@@ -7,8 +7,8 @@ export interface Carro {
   placa: string;
   tipoCombustivel: string;
   portas: number;
-  preçoAluguelPorDia: number;
-  preçoVenda: number;
+  precoAluguelPorDia: number;
+  precoVenda: number;
   urlImagem?: string;
   disponivelParaAluguel: boolean;
   disponivelParaVenda: boolean;
