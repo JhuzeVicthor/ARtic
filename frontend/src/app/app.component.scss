@@ -58,7 +58,7 @@ body {
       transition: color 0.3s ease;
 
       &:hover {
-        color: lighten($primary-color, 30%);
+        color: color.adjust($primary-color, $lightness: 30%);
         &::after {
           width: 100%;
         }
@@ -98,7 +98,7 @@ body {
       background-color: $white;
       color: $primary-color;
       &:hover {
-        background-color: lighten($primary-color, 30%);
+        background-color: color.adjust($primary-color, $lightness: 30%);
         color: $white;
       }
     }
@@ -159,7 +159,7 @@ body {
     }
 
     p, li, a {
-      color: lighten($dark-blue-footer, 40%);
+      color: color.adjust($dark-blue-footer, $lightness: 40%);
       text-decoration: none;
       line-height: 1.8;
       transition: color 0.3s ease;
@@ -183,10 +183,10 @@ body {
   .footer-bottom {
     text-align: center;
     padding-top: 20px;
-    border-top: 1px solid lighten($dark-blue-footer, 10%);
+    border-top: 1px solid color.adjust($dark-blue-footer, $lightness: 10%);
     p {
       margin: 0;
-      color: lighten($dark-blue-footer, 40%);
+      color: color.adjust($dark-blue-footer, $lightness: 40%);
     }
   }
 
