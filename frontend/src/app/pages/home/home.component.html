@@ -14,22 +14,25 @@
     <div class="search-filter-container">
       <h3>Encontre seu Veículo Ideal</h3>
       <div class="filter-group">
-        <select class="form-control" [(ngModel)]="tipoServico">
+        <select class="form-control" [(ngModel)]="tipoService">
           <option value="">Tipo de Serviço</option>
           <option value="aluguel">Aluguel</option>
           <option value="compra">Compra</option>
         </select>
         <select class="form-control" [(ngModel)]="marca">
           <option value="">Marca</option>
-          <option value="toyota">Toyota</option>
-          <option value="honda">Honda</option>
-          <option value="bmw">BMW</option>
+          <option value="Toyota">Toyota</option>
+          <option value="Honda">Honda</option>
+          <option value="BMW">BMW</option>
+          <option value="Audi">Audi</option>
+          <option value="Mercedes">Mercedes</option>
+          <option value="Ford">Ford</option>
         </select>
         <select class="form-control" [(ngModel)]="categoria">
           <option value="">Categoria</option>
-          <option value="suv">SUV</option>
-          <option value="sedan">Sedan</option>
-          <option value="hatch">Hatch</option>
+          <option value="SUV">SUV</option>
+          <option value="Sedan">Sedan</option>
+          <option value="Hatch">Hatch</option>
         </select>
         <button class="btn btn-search" (click)="buscarVeiculo()">Buscar</button>
       </div>
@@ -41,17 +44,22 @@
     <p>Veículos selecionados com as melhores condições e preços</p>
     <div class="car-cards-grid">
       <div class="car-card" *ngFor="let carro of carrosDestaqueAluguel">
-        <span class="status-tag available">{{ carro.status }}</span>
-        <div class="car-image-placeholder"></div>
-        <h3>{{ carro.nome }}</h3>
+        <span class="status-tag available">Disponível</span>
+        <img [src]="carro.urlImagem || 'https://via.placeholder.com/280x180?text=Sem+Imagem'" alt="{{ carro.marca }} {{ carro.modelo }}" class="car-image">
+        <h3>{{ carro.marca }} {{ carro.modelo }} ({{ carro.ano }})</h3>
         <div class="car-features">
-          <span *ngFor="let feature of carro.caracteristicas">{{ feature }}</span>
+          <span>{{ carro.tipoCombustivel }}</span>
+          <span>{{ carro.portas }} Portas</span>
+          <span>{{ carro.cor }}</span>
         </div>
         <div class="car-price">
-          R$ {{ carro.preco | number:'1.2-2' }}/dia
-          <span class="rating">{{ carro.rating }} <i class="fas fa-star"></i></span>
+          R$ {{ carro.precoAluguelPorDia | currency:'BRL':'symbol':'1.2-2' }}/dia
+          <span class="rating">4.8 <i class="fas fa-star"></i></span>
         </div>
-        <button class="btn btn-details">Ver Detalhes</button>
+        <button class="btn btn-details" [routerLink]="['/carros', carro.id]">Ver Detalhes</button>
+      </div>
+      <div *ngIf="carrosDestaqueAluguel.length === 0" class="no-cars-message">
+        Nenhum carro disponível para aluguel no momento.
       </div>
     </div>
   </section>
@@ -61,18 +69,21 @@
     <p>Encontre o carro perfeito para chamar de seu</p>
     <div class="car-cards-grid">
       <div class="car-card" *ngFor="let carro of carrosAVenda">
-        <span class="status-tag for-sale">{{ carro.status }}</span>
-        <div class="car-image-placeholder"></div>
-        <h3>{{ carro.nome }}</h3>
+        <span class="status-tag for-sale">À Venda</span>
+        <img [src]="carro.urlImagem || 'https://via.placeholder.com/280x180?text=Sem+Imagem'" alt="{{ carro.marca }} {{ carro.modelo }}" class="car-image">
+        <h3>{{ carro.marca }} {{ carro.modelo }} ({{ carro.ano }})</h3>
         <div class="car-features">
-          <span>{{ carro.ano }}</span>
-          <span>{{ carro.km }}</span>
-          <span *ngFor="let feature of carro.caracteristicas">{{ feature }}</span>
+          <span>{{ carro.tipoCombustivel }}</span>
+          <span>{{ carro.portas }} Portas</span>
+          <span>{{ carro.cor }}</span>
         </div>
         <div class="car-price">
-          R$ {{ carro.preco | number:'1.2-2' }}
+          R$ {{ carro.precoVenda | currency:'BRL':'symbol':'1.2-2' }}
         </div>
-        <button class="btn btn-details">Ver Detalhes</button>
+        <button class="btn btn-details" [routerLink]="['/carros', carro.id]">Ver Detalhes</button>
+      </div>
+      <div *ngIf="carrosAVenda.length === 0" class="no-cars-message">
+        Nenhum carro disponível para venda no momento.
       </div>
     </div>
   </section>

@@ -1,44 +1,64 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { FormsModule} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule, NgIf, NgFor, CurrencyPipe } from '@angular/common';
+import { RouterLink, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import {Carro} from '../../interface/carro.model';
+import {CarroService} from '../../service/carro.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    CurrencyPipe
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  constructor(private router: Router) {}
+export class HomeComponent implements  OnInit {
+
+  carrosDestaqueAluguel: Carro[] = [];
+  carrosAVenda: Carro[] = [];
+
+  tipoService: string = '' ;
+  marca: string = '' ;
+  categoria: string = '' ;
+
+  constructor(
+    private router: Router,
+    private carroService : CarroService,
+    ) {}
+
+  ngOnInit() {
+    this.loadFeaturedCars();
+  }
+
+  loadFeaturedCars(): void {
+    this.carroService.getAllCarros().subscribe((data: Carro[]) => {
+        this.carrosDestaqueAluguel = data.filter(carro => carro.disponivelParaAluguel).slice(0, 3);
+        this.carrosAVenda = data.filter(carro => carro.disponivelParaVenda).slice(0, 3);
+
+        console.log('Carros para Aluguel:', this.carrosDestaqueAluguel);
+        console.log('Carros para Venda:', this.carrosAVenda);
+      },
+      error => {
+        console.error('Erro ao carregar carros em destaque: ', error);
+      }
+    );
+  }
 
   alugarAgora(): void {
-    this.router.navigate(['/aluguel']);
+    this.router.navigate(['/api/carros'], {queryParams: {tipo: 'Aluguel'} });
   }
 
   comprarAgora(): void {
-    this.router.navigate(['/compra']);
+    this.router.navigate(['/api/carros'], {queryParams: {tipo: 'Comprar'} });
   }
-
-  tipoServico: string = '';
-  marca: string = '';
-  categoria: string = '';
 
   buscarVeiculo(): void {
-    console.log('Buscar veículo:', { tipoServico: this.tipoServico, marca: this.marca, categoria: this.categoria });
-    this.router.navigate(['/carros'], { queryParams: { tipo: this.tipoServico, marca: this.marca, categoria: this.categoria } });
+    console.log('Buscar veículo:', { tipoServico: this.tipoService, marca: this.marca, categoria: this.categoria });
+    this.router.navigate(['/carros'], { queryParams: { tipo: this.tipoService, marca: this.marca, categoria: this.categoria } });
   }
-
-  carrosDestaqueAluguel = [
-    { nome: 'Toyota Corolla 2023', preco: 120, caracteristicas: ['Automático', 'Ar Condicionado', '4 Passageiros'], rating: 4.8, status: 'Disponível' },
-    { nome: 'Honda Civic 2023', preco: 140, caracteristicas: ['Automático', 'Ar Condicionado', '5 Passageiros'], rating: 4.9, status: 'Disponível' },
-    { nome: 'Ford EcoSport 2022', preco: 110, caracteristicas: ['Manual', 'Ar Condicionado', '5 Passageiros'], rating: 4.7, status: 'Disponível' },
-  ];
-
-  carrosAVenda = [
-    { nome: 'BMW X3 2021', preco: 285000, ano: 2021, km: '35.000 km', caracteristicas: ['Automático', 'Couro', 'AWD', 'Teto Solar'], status: 'À Venda' },
-    { nome: 'Audi A4 2020', preco: 195000, ano: 2020, km: '42.000 km', caracteristicas: ['Automático', 'Turbo', 'Couro', 'GPS'], status: 'À Venda' },
-    { nome: 'Mercedes C180 2022', preco: 220000, ano: 2022, km: '18.000 km', caracteristicas: ['Automático', 'Couro', 'LED', 'Câmera'], status: 'À Venda' },
-  ];
 }
