@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5efb3c27-692d-424f-b65a-84ebe7b951bd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/controller/AluguelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/controller/CompraController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/dto/AluguelRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/dto/CompraRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/repository/AluguelRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/repository/CompraRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/repository/UsuarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/services/AluguelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/services/CompraService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ARtic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ARtic.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/model/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/model/Compra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-lista/carro-lista.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-lista/carro-lista.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +27,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="SCSS File" />
         <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -116,7 +126,13 @@
       <workItem from="1753805414482" duration="10004000" />
       <workItem from="1753889655566" duration="5403000" />
       <workItem from="1753964136712" duration="7124000" />
-      <workItem from="1754055106557" duration="5957000" />
+      <workItem from="1754055106557" duration="6206000" />
+      <workItem from="1755521533131" duration="407000" />
+      <workItem from="1755521957999" duration="1597000" />
+      <workItem from="1755610734211" duration="8512000" />
+      <workItem from="1755693944810" duration="11192000" />
+      <workItem from="1755710685519" duration="9000" />
+      <workItem from="1755779687990" duration="3753000" />
     </task>
     <servers />
   </component>

@@ -19,7 +19,7 @@ public class Compra {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private Usuario comprador;
 
     private LocalDate dataCompra;
     private BigDecimal valorPago;

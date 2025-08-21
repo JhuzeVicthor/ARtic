@@ -54,6 +54,4 @@ export class CarroListaComponent implements OnInit {
   addNewCarro(): void {
     this.router.navigate(['/carro/novo']);
   }
-
-
 }
