@@ -39,6 +39,26 @@ public class CarroService {
                 .collect(Collectors.toList());
     }
 
+    public List<CarroResponseDTO> getCarrosDisponiveisAluguel() {
+        return carroRepository.findByDisponivelParaAluguel(true).stream()
+                .map(carro -> {
+                    CarroResponseDTO dto = new CarroResponseDTO();
+                    BeanUtils.copyProperties(carro, dto);
+                    return dto;
+                })
+                .collect(Collectors.toList());
+    }
+
+    public List<CarroResponseDTO> getCarrosDisponiveisVendas() {
+        return carroRepository.findByDisponivelParaVenda(true).stream()
+                .map(carro -> {
+                    CarroResponseDTO dto = new CarroResponseDTO();
+                    BeanUtils.copyProperties(carro, dto);
+                    return dto;
+                })
+                .collect(Collectors.toList());
+    }
+
     public Optional<CarroResponseDTO> getCarroById(Long id) {
         return carroRepository.findById(id)
                 .map(carro ->  {

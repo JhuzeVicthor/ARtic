@@ -8,6 +8,8 @@ export const routes: Routes = [
   { path: 'carros', component: CarroListaComponent },
   { path: 'carros/novo', component: CarroFormComponent },
   { path: 'carros/editar/:id', component: CarroFormComponent },
+  { path: 'carros/:id', component: CarroListaComponent },
+  { path: 'admin/carros', component: CarroListaComponent },
   { path: 'alaluguel', component: CarroListaComponent },
   { path: 'compra', component: CarroListaComponent }
 ];

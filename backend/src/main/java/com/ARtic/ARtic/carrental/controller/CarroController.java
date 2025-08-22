@@ -28,8 +28,15 @@ public class CarroController {
 
 
     @GetMapping
-    public ResponseEntity<List<CarroResponseDTO>> getAllCarros() {
-        List<CarroResponseDTO> carros = carroService.getAllCarros();
+    public ResponseEntity<List<CarroResponseDTO>> getCarrosDisponiveis(@RequestParam(required = false) String tipo){
+        List<CarroResponseDTO> carros;
+        if ("Aluguel".equalsIgnoreCase(tipo)) {
+            carros = carroService.getCarrosDisponiveisAluguel();
+        } else if ("Compra".equalsIgnoreCase(tipo)) {
+            carros = carroService.getCarrosDisponiveisVendas();
+        } else {
+            carros = carroService.getAllCarros();
+        }
         return new ResponseEntity<>(carros, HttpStatus.OK);
     }
 
