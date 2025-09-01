@@ -51,7 +51,6 @@ export class CarroListaComponent implements OnInit {
       this.mensagemVazio = 'Nenhum carro disponivel';
     }
   }
-
   getAllCarros(): void {
     this.carroService.getAllCarros().subscribe(
       (data: Carro[]) => {

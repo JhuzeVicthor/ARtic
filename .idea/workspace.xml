@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5efb3c27-692d-424f-b65a-84ebe7b951bd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/carros/bmw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/carros/fiat_mobi_vermelho.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/carros/ford_ranger.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/carros/gol_2021.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/carros/jeep_renegade.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/carros/onix_2024.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/controller/CarroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/controller/CarroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/repository/CarroRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/repository/CarroRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/dto/CarroRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/dto/CarroRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/model/Carro.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/model/Carro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/services/CarroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/carrental/services/CarroService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/ARtic/ARtic/ARticApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-lista/carro-lista.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-lista/carro-lista.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-lista/carro-lista.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-lista/carro-lista.component.ts" afterDir="false" />
     </list>
@@ -44,6 +51,9 @@
     &quot;accountId&quot;: &quot;94261413-5754-4c55-9129-4131dd6e7635&quot;
   }
 }</component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-Xmx2G -Xms1G" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
@@ -60,22 +70,30 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.ARticApplication.executor": "Run",
     "disable.download.node.interpreter.editor.notification": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/jhuze/Documentos/ARtic/frontend/src/assets/carros",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/assets/carros" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend/src" />
     </key>
@@ -128,7 +146,11 @@
       <workItem from="1755693944810" duration="11192000" />
       <workItem from="1755710685519" duration="9000" />
       <workItem from="1755779687990" duration="7859000" />
-      <workItem from="1755868810882" duration="6124000" />
+      <workItem from="1755868810882" duration="6454000" />
+      <workItem from="1756129029416" duration="8328000" />
+      <workItem from="1756139471711" duration="2818000" />
+      <workItem from="1756475303001" duration="3678000" />
+      <workItem from="1756737830918" duration="9866000" />
     </task>
     <servers />
   </component>
@@ -145,5 +167,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

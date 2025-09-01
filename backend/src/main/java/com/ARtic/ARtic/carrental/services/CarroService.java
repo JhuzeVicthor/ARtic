@@ -29,6 +29,12 @@ public class CarroService {
         return carroResponseDTO;
     }
 
+    public List<CarroResponseDTO> createCarrosEmLote(List<CarroRequestDTO> carroRequestDTOS) {
+        return carroRequestDTOS.stream()
+                .map(this::createCarro)
+                .collect(Collectors.toList());
+    }
+
     public List<CarroResponseDTO> getAllCarros() {
         return carroRepository.findAll().stream()
                 .map(carro -> {

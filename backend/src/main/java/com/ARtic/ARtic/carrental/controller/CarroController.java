@@ -27,6 +27,13 @@ public class CarroController {
     }
 
 
+    @PostMapping("/em-lote")
+    public ResponseEntity<List<CarroResponseDTO>> createCarrosEmLote(@Valid @RequestBody List<CarroRequestDTO> carroRequestDTO) {
+        List<CarroResponseDTO> novosCarros = carroService.createCarrosEmLote(carroRequestDTO);
+        return new ResponseEntity<>(novosCarros, HttpStatus.CREATED);
+    }
+
+
     @GetMapping
     public ResponseEntity<List<CarroResponseDTO>> getCarrosDisponiveis(@RequestParam(required = false) String tipo){
         List<CarroResponseDTO> carros;

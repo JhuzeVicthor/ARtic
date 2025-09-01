@@ -26,7 +26,7 @@
         </p>
         <p class="price-value">
           <span *ngIf="carro.disponivelParaAluguel && tipoServico !== 'compra'">
-            {{ carro.precoAluguelPorDia | currency:'BRL':'symbol':'1.2-2' }}/dia
+            {{ carro.precoAluguelPorDia | currency:'BRL':'symbol':'1.2-2' }}
           </span>
           <span *ngIf="carro.disponivelParaVenda && tipoServico !== 'aluguel'">
             {{ carro.precoVenda | currency:'BRL':'symbol':'1.2-2' }}

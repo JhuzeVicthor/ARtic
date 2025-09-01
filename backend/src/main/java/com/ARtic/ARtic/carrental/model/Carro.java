@@ -14,7 +14,10 @@ public class Carro {
     private String modelo;
     private Integer ano;
     private String cor;
+
+    @Column(unique = true)
     private String placa;
+
     private String tipoCombustivel;
     private Integer portas;
     private BigDecimal precoAluguelPorDia;
