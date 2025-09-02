@@ -25,6 +25,10 @@ export class CarroService {
     return this.http.post<Carro>(this.apiUrl, carro);
   }
 
+  getCarrosAluguel(): Observable<Carro[]> {
+    return this.http.get<Carro[]>(`${this.apiUrl}?disponivelParaAluguel=true`);
+  }
+
   updateCarro(id: number, carro: Carro): Observable<Carro> {
     return this.http.put<Carro>(`${this.apiUrl}/${id}`, carro);
   }
