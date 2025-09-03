@@ -17,7 +17,7 @@ export class CarroListaComponent implements OnInit {
 
   carros: Carro[] = [];
   tipoServico: 'aluguel' | 'compra' | 'todos' = "todos";
-  tituloPagina: string =  'Todos os Carros'
+  tituloPagina: string =  'Carros para compra'
   mensagemVazio: string = 'Nenhum carro adicionado';
   isAdminView: boolean = false;
 

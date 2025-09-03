@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface CarroRepository  extends JpaRepository<Carro, Long> {
 
+    List<Carro> findByDisponivelParaAluguelTrue();
+    List<Carro> findByDisponivelParaVendaTrue();
     List<Carro> findByDisponivelParaAluguel(Boolean disponivel);
     List<Carro> findByDisponivelParaVenda(Boolean disponivel);
-    List<Carro> findByDisponivelParaAluguelOrDisponivelParaVenda(boolean aluguel, boolean venda);
 }

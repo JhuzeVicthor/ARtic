@@ -13,7 +13,10 @@ export class CarroService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCarros(): Observable<Carro[]> {
+  getAllCarros(disponivelParaAluguel?: boolean): Observable<Carro[]> {
+    if(disponivelParaAluguel !== undefined) {
+      return this.http.get<Carro[]>(`${this.apiUrl}?disponivelParaAluguel=${disponivelParaAluguel}`);
+    }
     return this.http.get<Carro[]>(this.apiUrl);
   }
 

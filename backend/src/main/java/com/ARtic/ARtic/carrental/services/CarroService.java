@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class CarroService {
+
     private final CarroRepository carroRepository;
 
     public CarroService(CarroRepository carroRepository) {
@@ -35,54 +36,48 @@ public class CarroService {
                 .collect(Collectors.toList());
     }
 
-    public List<CarroResponseDTO> getAllCarros() {
-        return carroRepository.findAll().stream()
-                .map(carro -> {
-                    CarroResponseDTO carroResponseDTO = new CarroResponseDTO();
-                    BeanUtils.copyProperties(carro, carroResponseDTO);
-                    return carroResponseDTO;
-                })
+    public List<CarroResponseDTO> getAllCarros(Boolean disponivelParaAluguel, Boolean disponivelParaVenda) {
+        List<Carro> carros;
+        if (disponivelParaAluguel != null && disponivelParaVenda != null) {
+            carros = carroRepository.findAll().stream()
+                    .filter(carro -> carro.getDisponivelParaAluguel() == disponivelParaAluguel &&
+                            carro.getDisponivelParaVenda() == disponivelParaVenda)
+                    .collect(Collectors.toList());
+        } else if (disponivelParaAluguel != null) {
+            carros = carroRepository.findByDisponivelParaAluguel(disponivelParaAluguel);
+        } else if (disponivelParaVenda != null) {
+            carros = carroRepository.findByDisponivelParaVenda(disponivelParaVenda);
+        } else {
+            carros = carroRepository.findAll();
+        }
+        return carros.stream()
+                .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
     public List<CarroResponseDTO> getCarrosDisponiveisAluguel() {
-        return carroRepository.findByDisponivelParaAluguel(true).stream()
-                .map(carro -> {
-                    CarroResponseDTO dto = new CarroResponseDTO();
-                    BeanUtils.copyProperties(carro, dto);
-                    return dto;
-                })
+        return carroRepository.findByDisponivelParaAluguelTrue().stream()
+                .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
     public List<CarroResponseDTO> getCarrosDisponiveisVendas() {
-        return carroRepository.findByDisponivelParaVenda(true).stream()
-                .map(carro -> {
-                    CarroResponseDTO dto = new CarroResponseDTO();
-                    BeanUtils.copyProperties(carro, dto);
-                    return dto;
-                })
+        return carroRepository.findByDisponivelParaVendaTrue().stream()
+                .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
     public Optional<CarroResponseDTO> getCarroById(Long id) {
         return carroRepository.findById(id)
-                .map(carro ->  {
-                    CarroResponseDTO carroResponseDTO = new CarroResponseDTO();
-                    BeanUtils.copyProperties(carro, carroResponseDTO);
-                    return carroResponseDTO;
-                });
+                .map(this::convertToDto);
     }
 
     public Optional<CarroResponseDTO> updateCarro(Long id, CarroRequestDTO carroRequestDTO) {
-        return carroRepository.findById(id)
-                .map(existingCarro -> {
-                    BeanUtils.copyProperties(carroRequestDTO, existingCarro, "id"); // Ignora o ID ao copiar
-                    Carro updatedCarro = carroRepository.save(existingCarro);
-                    CarroResponseDTO carroResponseDTO = new CarroResponseDTO();
-                    BeanUtils.copyProperties(updatedCarro, carroResponseDTO);
-                    return carroResponseDTO;
-                });
+        return carroRepository.findById(id).map(existingCarro -> {
+            BeanUtils.copyProperties(carroRequestDTO, existingCarro);
+            existingCarro.setId(id);
+            return convertToDto(carroRepository.save(existingCarro));
+        });
     }
 
     public boolean deleteCarro(Long id) {
@@ -91,5 +86,11 @@ public class CarroService {
             return true;
         }
         return false;
+    }
+
+    private CarroResponseDTO convertToDto(Carro carro) {
+        CarroResponseDTO dto = new CarroResponseDTO();
+        BeanUtils.copyProperties(carro, dto);
+        return dto;
     }
 }

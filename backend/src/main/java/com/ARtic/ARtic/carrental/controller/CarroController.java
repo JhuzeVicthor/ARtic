@@ -4,6 +4,7 @@ import com.ARtic.ARtic.carrental.dto.CarroRequestDTO;
 import com.ARtic.ARtic.carrental.dto.CarroResponseDTO;
 import com.ARtic.ARtic.carrental.services.CarroService;
 import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,16 +36,11 @@ public class CarroController {
 
 
     @GetMapping
-    public ResponseEntity<List<CarroResponseDTO>> getCarrosDisponiveis(@RequestParam(required = false) String tipo){
-        List<CarroResponseDTO> carros;
-        if ("Aluguel".equalsIgnoreCase(tipo)) {
-            carros = carroService.getCarrosDisponiveisAluguel();
-        } else if ("Compra".equalsIgnoreCase(tipo)) {
-            carros = carroService.getCarrosDisponiveisVendas();
-        } else {
-            carros = carroService.getAllCarros();
-        }
-        return new ResponseEntity<>(carros, HttpStatus.OK);
+    public ResponseEntity<List<CarroResponseDTO>> getAllCarros(
+            @RequestParam(required = false) Boolean disponivelParaAluguel,
+            @RequestParam(required = false) Boolean disponivelParaVenda) {
+        List<CarroResponseDTO> carros = carroService.getAllCarros(disponivelParaAluguel, disponivelParaVenda);
+        return ResponseEntity.ok(carros);
     }
 
 
