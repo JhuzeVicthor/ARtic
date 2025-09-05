@@ -5,6 +5,7 @@ import com.ARtic.ARtic.carrental.dto.CarroResponseDTO;
 import com.ARtic.ARtic.carrental.services.CarroService;
 import jakarta.validation.Valid;
 import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,21 +18,45 @@ public class CarroController {
 
     private final CarroService carroService;
 
+    @Autowired
     public CarroController(CarroService carroService) {
         this.carroService = carroService;
     }
 
-    @PostMapping
-    public ResponseEntity<CarroResponseDTO> createCarro(@Valid @RequestBody CarroRequestDTO carroRequestDTO) {
+    @PostMapping("/comprar")
+    public ResponseEntity<CarroResponseDTO> createCarroVenda(@Valid @RequestBody CarroRequestDTO carroRequestDTO) {
+        carroRequestDTO.setDisponivelParaAluguel(false);
+        carroRequestDTO.setDisponivelParaVenda(true);
         CarroResponseDTO newCarro = carroService.createCarro(carroRequestDTO);
         return new ResponseEntity<>(newCarro, HttpStatus.CREATED);
     }
 
+    @PostMapping("/aluguel")
+    public ResponseEntity<CarroResponseDTO> createCarroAluguel(@Valid @RequestBody CarroRequestDTO carroRequestDTO) {
+        carroRequestDTO.setDisponivelParaAluguel(true);
+        carroRequestDTO.setDisponivelParaVenda(false);
+        CarroResponseDTO newCarro = carroService.createCarro(carroRequestDTO);
+        return new ResponseEntity<>(newCarro, HttpStatus.CREATED);
+    }
 
-    @PostMapping("/em-lote")
-    public ResponseEntity<List<CarroResponseDTO>> createCarrosEmLote(@Valid @RequestBody List<CarroRequestDTO> carroRequestDTO) {
-        List<CarroResponseDTO> novosCarros = carroService.createCarrosEmLote(carroRequestDTO);
-        return new ResponseEntity<>(novosCarros, HttpStatus.CREATED);
+    @PostMapping("/comprar/em-lote")
+    public ResponseEntity<List<CarroResponseDTO>> createCarrosCompraEmLote(@Valid @RequestBody List<CarroRequestDTO> carroRequestDTOs) {
+        carroRequestDTOs.forEach(dto -> {
+            dto.setDisponivelParaAluguel(false);
+            dto.setDisponivelParaVenda(true);
+        });
+        List<CarroResponseDTO> novosCarros = carroService.createCarrosEmLote(carroRequestDTOs);
+        return new ResponseEntity<>(novosCarros, HttpStatus.OK);
+    }
+
+    @PostMapping("aluguel/em-lote")
+    public ResponseEntity<List<CarroResponseDTO>> createCarrosAluguelEmLote(@Valid @RequestBody List<CarroRequestDTO> carroRequestDTOs) {
+        carroRequestDTOs.forEach(dto -> {
+            dto.setDisponivelParaAluguel(true);
+            dto.setDisponivelParaVenda(false);
+        });
+        List<CarroResponseDTO> novosCarros = carroService.createCarrosEmLote(carroRequestDTOs);
+        return new ResponseEntity<>(novosCarros, HttpStatus.OK);
     }
 
 

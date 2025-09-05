@@ -6,6 +6,7 @@ import com.ARtic.ARtic.carrental.dto.CarroResponseDTO;
 import com.ARtic.ARtic.carrental.model.Carro;
 import com.ARtic.ARtic.carrental.repository.CarroRepository;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,13 +18,29 @@ public class CarroService {
 
     private final CarroRepository carroRepository;
 
+    @Autowired
     public CarroService(CarroRepository carroRepository) {
         this.carroRepository = carroRepository;
     }
 
     public CarroResponseDTO createCarro(CarroRequestDTO carroRequestDTO){
         Carro carro = new Carro();
-        BeanUtils.copyProperties(carroRequestDTO, carro);
+
+        carro.setMarca(carroRequestDTO.getMarca());
+        carro.setModelo(carroRequestDTO.getModelo());
+        carro.setAno(carroRequestDTO.getAno());
+        carro.setCor(carroRequestDTO.getCor());
+        carro.setPlaca(carroRequestDTO.getPlaca());
+        carro.setPlaca(carroRequestDTO.getPlaca());
+        carro.setTipoCombustivel(carroRequestDTO.getTipoCombustivel());
+        carro.setPortas(carroRequestDTO.getPortas());
+        carro.setPrecoAluguelPorDia(carroRequestDTO.getPrecoAluguelPorDia());
+        carro.setPrecoVenda(carroRequestDTO.getPrecoVenda());
+        carro.setUrlImagem(carroRequestDTO.getUrlImagem());
+
+        carro.setDisponivelParaAluguel(carroRequestDTO.getDisponivelParaAluguel());
+        carro.setDisponivelParaVenda(carroRequestDTO.getDisponivelParaVenda());
+
         Carro savedCarro = carroRepository.save(carro);
         CarroResponseDTO carroResponseDTO = new CarroResponseDTO();
         BeanUtils.copyProperties(savedCarro, carroResponseDTO);
@@ -31,8 +48,33 @@ public class CarroService {
     }
 
     public List<CarroResponseDTO> createCarrosEmLote(List<CarroRequestDTO> carroRequestDTOS) {
-        return carroRequestDTOS.stream()
-                .map(this::createCarro)
+        List<Carro> carros = carroRequestDTOS.stream()
+                .map(dto -> {
+                    Carro carro = new Carro();
+                    carro.setMarca(dto.getMarca());
+                    carro.setModelo(dto.getModelo());
+                    carro.setAno(dto.getAno());
+                    carro.setCor(dto.getCor());
+                    carro.setPlaca(dto.getPlaca());
+                    carro.setTipoCombustivel(dto.getTipoCombustivel());
+                    carro.setPortas(dto.getPortas());
+                    carro.setPrecoAluguelPorDia(dto.getPrecoAluguelPorDia());
+                    carro.setPrecoVenda(dto.getPrecoVenda());
+                    carro.setUrlImagem(dto.getUrlImagem());
+                    carro.setDisponivelParaAluguel(dto.getDisponivelParaAluguel());
+                    carro.setDisponivelParaVenda(dto.getDisponivelParaVenda());
+                    return carro;
+                })
+                .collect(Collectors.toList());
+
+        List<Carro> savedCarros = carroRepository.saveAll(carros);
+
+        return savedCarros.stream()
+                .map(carro ->  {
+                    CarroResponseDTO carroResponseDTO = new CarroResponseDTO();
+                    BeanUtils.copyProperties(carro, carroResponseDTO);
+                    return carroResponseDTO;
+                })
                 .collect(Collectors.toList());
     }
 

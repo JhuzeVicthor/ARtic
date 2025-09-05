@@ -13,6 +13,9 @@ public class CarroRequestDTO {
     @NotBlank(message = "Marca é obrigatória")
     private String marca;
 
+    @NotBlank(message = "Modelo é obrigatório")
+    private String modelo;
+
     @NotNull(message = "Ano é obrigatório")
     @Min(value = 1900, message = "Ano inválido")
     private Integer ano;
