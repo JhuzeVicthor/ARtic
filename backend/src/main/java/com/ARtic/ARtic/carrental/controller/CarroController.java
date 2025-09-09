@@ -33,8 +33,15 @@ public class CarroController {
 
     @PostMapping("/aluguel")
     public ResponseEntity<CarroResponseDTO> createCarroAluguel(@Valid @RequestBody CarroRequestDTO carroRequestDTO) {
+        System.out.println("DEBUG: Criando carro para ALUGUEL");
+        System.out.println("DEBUG: Criando carro para COMPRA" + carroRequestDTO.getDisponivelParaAluguel() +
+                ", Compra" + carroRequestDTO.getDisponivelParaAluguel());
+
         carroRequestDTO.setDisponivelParaAluguel(true);
         carroRequestDTO.setDisponivelParaVenda(false);
+        System.out.println("DEBUG: Depois - Aluguel: " + carroRequestDTO.getDisponivelParaAluguel() +
+        ", Compra: " + carroRequestDTO.getDisponivelParaVenda());
+
         CarroResponseDTO newCarro = carroService.createCarro(carroRequestDTO);
         return new ResponseEntity<>(newCarro, HttpStatus.CREATED);
     }
@@ -64,6 +71,7 @@ public class CarroController {
     public ResponseEntity<List<CarroResponseDTO>> getAllCarros(
             @RequestParam(required = false) Boolean disponivelParaAluguel,
             @RequestParam(required = false) Boolean disponivelParaVenda) {
+        System.out.println("DEBUG GET: Aluguel=" + disponivelParaAluguel + ", Compra=" + disponivelParaVenda);
         List<CarroResponseDTO> carros = carroService.getAllCarros(disponivelParaAluguel, disponivelParaVenda);
         return ResponseEntity.ok(carros);
     }

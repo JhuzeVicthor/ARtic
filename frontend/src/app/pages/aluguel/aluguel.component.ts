@@ -22,9 +22,19 @@ export class AluguelComponent implements OnInit {
   }
 
   getCarrosAluguel(): void {
+    console.log('Buscando carros para aluguel...');
     this.carroService.getCarrosAluguel()
-      .subscribe(carros => {
-        this.carrosAluguel = carros;
+      .subscribe({
+        next: (carros) => {
+          this.carrosAluguel = carros.filter(carro =>
+            carro.disponivelParaAluguel === true && carro.disponivelParaVenda === false
+          );
+          console.log('Carros recebidos para aluguel:', this.carrosAluguel);
+        },
+        error: (err) => {
+          console.error('Erro ao buscar carros:', err);
+        }
       });
   }
+
 }

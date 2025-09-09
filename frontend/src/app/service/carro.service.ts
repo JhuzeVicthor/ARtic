@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Carro} from '../interface/carro.model';
 
@@ -13,15 +13,19 @@ export class CarroService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCarros(disponivelParaAluguel?: boolean): Observable<Carro[]> {
-    if(disponivelParaAluguel !== undefined) {
-      return this.http.get<Carro[]>(`${this.apiUrl}?disponivelParaAluguel=${disponivelParaAluguel}`);
+  getAllCarros(disponivelParaAluguel?: boolean, disponivelParaVenda?: boolean): Observable<Carro[]> {
+    let params = new HttpParams();
+    if (disponivelParaAluguel !== undefined && disponivelParaAluguel !== null) {
+      params = params.set('disponivelParaAluguel', disponivelParaAluguel.toString());
     }
-    return this.http.get<Carro[]>(this.apiUrl);
+    if (disponivelParaVenda !== undefined && disponivelParaVenda !== null) {
+      params = params.set('disponivelParaVenda', disponivelParaVenda.toString());
+    }
+    return this.http.get<Carro[]>(this.apiUrl, { params });
   }
 
   getCarroById(id: number): Observable<Carro> {
-    return this.http.get<Carro>(`${this.apiUrl}/${id})`);
+    return this.http.get<Carro>(`${this.apiUrl}/${id}`);
   }
 
   createCarro(carro: Carro): Observable<Carro> {

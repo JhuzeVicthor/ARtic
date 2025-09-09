@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Carro} from '../../interface/carro.model';
-import {HttpClient} from '@angular/common/http';
 import {CarroService} from '../../service/carro.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {CommonModule, CurrencyPipe, NgFor, NgIf} from '@angular/common';
@@ -51,19 +50,31 @@ export class CarroListaComponent implements OnInit {
       this.mensagemVazio = 'Nenhum carro disponivel';
     }
   }
+
   getAllCarros(): void {
-    this.carroService.getAllCarros().subscribe(
+    let disponivelParaAluguel: boolean | undefined;
+    let disponivelParaVenda: boolean | undefined;
+
+    if (this.tipoServico === 'aluguel') {
+      disponivelParaAluguel = true;
+      disponivelParaVenda = false;
+    } else if (this.tipoServico === 'compra') {
+      disponivelParaAluguel = false;
+      disponivelParaVenda = true;
+    }
+
+    this.carroService.getAllCarros(disponivelParaAluguel, disponivelParaVenda).subscribe(
       (data: Carro[]) => {
         if (this.tipoServico === 'aluguel') {
-          this.carros = data.filter(carro => carro.disponivelParaAluguel);
-        } else  if (this.tipoServico === 'compra') {
-          this.carros = data.filter(carro => carro.disponivelParaVenda);
-        } else{
+          this.carros = data.filter(c => c.disponivelParaAluguel && !c.disponivelParaVenda);
+        } else if (this.tipoServico === 'compra') {
+          this.carros = data.filter(c => c.disponivelParaVenda && !c.disponivelParaAluguel);
+        } else {
           this.carros = data;
         }
       },
       error => {
-        console.error('Erro ao carregar carros:', error);
+        console.error('Erro ao buscar carros:', error);
       }
     );
   }

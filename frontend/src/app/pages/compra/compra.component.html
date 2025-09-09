@@ -1,0 +1,21 @@
+<div class="compra-container">
+  <h1>Carros Disponíveis para Compra</h1>
+
+  <div *ngIf="loading" class="message">Carregando carros para compra...</div>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+  <div *ngIf="!loading && !error && carrosCompra.length === 0" class="message">
+    Nenhum carro disponível para compra no momento.
+  </div>
+
+  <div *ngIf="!loading && !error && carrosCompra.length > 0" class="carro-grid">
+    <div *ngFor="let carro of carrosCompra" class="carro-card">
+      <img [src]="carro.urlImagem" alt="{{ carro.marca }} {{ carro.modelo }}">
+      <h2>{{ carro.marca }} {{ carro.modelo }}</h2>
+      <p>Ano: {{ carro.ano }}</p>
+      <p>Cor: {{ carro.cor }}</p>
+      <p>Preço de Venda: {{ carro.precoVenda | currency:'BRL' }}</p>
+      <button>Ver Detalhes / Comprar</button>
+    </div>
+  </div>
+</div>

@@ -24,6 +24,9 @@ public class CarroService {
     }
 
     public CarroResponseDTO createCarro(CarroRequestDTO carroRequestDTO){
+        System.out.println("DEBUG SERVICE: Recebendo - Aluguel: " + carroRequestDTO.getDisponivelParaAluguel() +
+                ", Venda:  " +carroRequestDTO.getDisponivelParaVenda());
+
         Carro carro = new Carro();
 
         carro.setMarca(carroRequestDTO.getMarca());
@@ -42,6 +45,9 @@ public class CarroService {
         carro.setDisponivelParaVenda(carroRequestDTO.getDisponivelParaVenda());
 
         Carro savedCarro = carroRepository.save(carro);
+        System.out.println("DEBUG SERVICE: Salvo - Aluguel: " + savedCarro.getDisponivelParaAluguel() +
+                ", Venda: " + savedCarro.getDisponivelParaVenda());
+
         CarroResponseDTO carroResponseDTO = new CarroResponseDTO();
         BeanUtils.copyProperties(savedCarro, carroResponseDTO);
         return carroResponseDTO;

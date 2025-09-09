@@ -43,9 +43,7 @@ public class CarroRequestDTO {
 
     private String urlImagem;
 
-    @NotNull(message = "Disponibilidade para aluguel é obrigatória")
     private Boolean disponivelParaAluguel;
 
-    @NotNull(message = "Disponibilidade para venda é obrigatória")
     private Boolean disponivelParaVenda;
 }
