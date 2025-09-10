@@ -10,12 +10,16 @@
 
   <div *ngIf="!loading && !error && carrosCompra.length > 0" class="carro-grid">
     <div *ngFor="let carro of carrosCompra" class="carro-card">
-      <img [src]="carro.urlImagem" alt="{{ carro.marca }} {{ carro.modelo }}">
-      <h2>{{ carro.marca }} {{ carro.modelo }}</h2>
-      <p>Ano: {{ carro.ano }}</p>
-      <p>Cor: {{ carro.cor }}</p>
-      <p>Preço de Venda: {{ carro.precoVenda | currency:'BRL' }}</p>
-      <button>Ver Detalhes / Comprar</button>
+      <div class="carro-image">
+        <img [src]="carro.urlImagem || 'assets/placeholder-car.jpg'" alt="{{ carro.marca }} {{ carro.modelo }}">
+      </div>
+      <div class="carro-info">
+        <h2>{{ carro.marca }} {{ carro.modelo }}</h2>
+        <p><strong>Ano:</strong> {{ carro.ano }}</p>
+        <p><strong>Cor:</strong> {{ carro.cor }}</p>
+        <p><strong>Preço de Venda:</strong> {{ carro.precoVenda | currency:'BRL' }}</p>
+        <button class="btn-comprar">Ver Detalhes / Comprar</button>
+      </div>
     </div>
   </div>
 </div>

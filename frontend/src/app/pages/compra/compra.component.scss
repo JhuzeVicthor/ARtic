@@ -1,85 +1,122 @@
-@use "sass:color";
-
-.container {
+.compra-container {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  h2 {
-    color: #800000;
+  h1 {
     text-align: center;
-    margin-bottom: 20px;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+  }
+
+  .message, .error-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+
+  .error-message {
+    background-color: #ffe6e6;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+  }
+
+  .message {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #1976d2;
+  }
+
+  .carro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+  }
+
+  .carro-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .carro-image {
+      height: 200px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+    }
+
+    .carro-info {
+      padding: 20px;
+
+      h2 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      p {
+        color: #555;
+        margin-bottom: 10px;
+        font-size: 1rem;
+
+        strong {
+          color: #333;
+        }
+      }
+
+      .btn-comprar {
+        width: 100%;
+        padding: 12px;
+        background: #27ae60;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-top: 15px;
+
+        &:hover {
+          background: #219653;
+        }
+      }
+    }
   }
 }
 
-.car-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.car-card {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-
-  img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid #eee;
-  }
-
-  .car-details {
+// Responsividade
+@media (max-width: 768px) {
+  .compra-container {
     padding: 15px;
-    h3 {
-      color: #333333;
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-    p {
-      color: #555555;
-      font-size: 0.9em;
-      margin-bottom: 5px;
-    }
-    button {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-right: 10px;
-      font-weight: bold;
-    }
-    .edit-btn {
-      background-color: #800000;
-      color: #ffffff;
-    }
-    .delete-btn {
-      background-color: #ff4500;
-      color: #ffffff;
-    }
-  }
-}
 
-.add-btn {
-  display: block;
-  width: fit-content;
-  margin: 20px auto 0;
-  padding: 12px 25px;
-  background-color: #800000;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.1em;
-  font-weight: bold;
-  &:hover {
-    background-color: color.adjust(#800000, $lightness: -10%);
+    h1 {
+      font-size: 2rem;
+    }
+
+    .carro-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
   }
 }

@@ -28,7 +28,7 @@ export class CompraComponent implements OnInit {
     this.carroService.getAllCarros(false, true).subscribe({
       next: (carros) => {
         this.carrosCompra = carros.filter(carro =>
-          carro.disponivelParaVenda === true && carro.disponivelParaAluguel === false);
+          carro.disponivelParaVenda === true && carro.disponivelParaAluguel !== true);
         this.loading = false;
       },
       error: (err) => {

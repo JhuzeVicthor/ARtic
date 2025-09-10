@@ -1,14 +1,33 @@
-<div class="container">
-  <h2>Carros para Aluguel</h2>
+<div class="aluguel-container">
+  <h1>Carros Disponíveis para Aluguel</h1>
 
-  <div class="car-list">
-    <div class="car-card" *ngFor="let carro of carrosAluguel">
-      <img [src]="carro.urlImagem" alt="{{ carro.marca }} {{ carro.modelo }}">
-      <div class="car-details">
-        <h3>{{ carro.marca }} {{ carro.modelo }} ({{ carro.ano }})</h3>
-        <p>Cor: {{ carro.cor }} | Placa: {{ carro.placa }}</p>
-        <p>Preço Aluguel/Dia: {{ carro.precoAluguelPorDia | currency:'BRL':'symbol':'1.2-2' }}</p>
-        <p>Disponível para Aluguel: {{ carro.disponivelParaAluguel ? 'Sim' : 'Não' }}</p>
+  <div *ngIf="carregando" class="mensagem">Carregando carros para aluguel...</div>
+  <div *ngIf="erro" class="mensagem-erro">{{ erro }}</div>
+
+  <div *ngIf="!carregando && !erro && carrosAluguel.length === 0" class="mensagem">
+    Nenhum carro disponível para aluguel no momento.
+  </div>
+
+  <div *ngIf="!carregando && !erro && carrosAluguel.length > 0" class="grade-carros">
+    <div *ngFor="let carro of carrosAluguel" class="cartao-carro">
+      <div class="imagem-carro">
+        <img [src]="carro.urlImagem || 'assets/placeholder-carro.jpg'"
+             alt="{{ carro.marca }} {{ carro.modelo }}"
+             onerror="this.src='assets/placeholder-carro.jpg'">
+      </div>
+      <div class="info-carro">
+        <h2>{{ carro.marca }} {{ carro.modelo }}</h2>
+        <div class="detalhes-carro">
+          <p><strong>Ano:</strong> {{ carro.ano }}</p>
+          <p><strong>Cor:</strong> {{ carro.cor }}</p>
+          <p><strong>Placa:</strong> {{ carro.placa }}</p>
+          <p><strong>Combustível:</strong> {{ carro.tipoCombustivel }}</p>
+          <p><strong>Portas:</strong> {{ carro.portas }}</p>
+        </div>
+        <div class="preco-aluguel">
+          <strong>Preço por Dia:</strong> {{ carro.precoAluguelPorDia | currency:'BRL' }}
+        </div>
+        <button class="btn-alugar">Alugar Agora</button>
       </div>
     </div>
   </div>

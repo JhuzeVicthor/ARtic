@@ -12,29 +12,34 @@ import {CommonModule} from '@angular/common';
   styleUrls: ['./aluguel.component.scss']
 })
 export class AluguelComponent implements OnInit {
-
   carrosAluguel: Carro[] = [];
+  carregando: boolean = true;
+  erro: string | null = null;
 
   constructor(private carroService: CarroService) { }
 
   ngOnInit(): void {
-    this.getCarrosAluguel();
+    this.obterCarrosAluguel();
   }
 
-  getCarrosAluguel(): void {
-    console.log('Buscando carros para aluguel...');
-    this.carroService.getCarrosAluguel()
-      .subscribe({
-        next: (carros) => {
-          this.carrosAluguel = carros.filter(carro =>
-            carro.disponivelParaAluguel === true && carro.disponivelParaVenda === false
-          );
-          console.log('Carros recebidos para aluguel:', this.carrosAluguel);
-        },
-        error: (err) => {
-          console.error('Erro ao buscar carros:', err);
-        }
-      });
-  }
+  obterCarrosAluguel(): void {
+    this.carregando = true;
+    this.erro = null;
 
+    this.carroService.getAllCarros(true, false).subscribe({
+      next: (carros) => {
+        this.carrosAluguel = carros.filter(carro =>
+          carro.disponivelParaAluguel === true &&
+          carro.disponivelParaVenda !== true
+        );
+        this.carregando = false;
+        console.log('Carros para aluguel carregados', this.carrosAluguel);
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar carros para aluguel: ', erro);
+        this.erro = 'Não foi possível carregar os carros para aluguel. Tente novamente mais tarde.';
+        this.carregando = false;
+      }
+    });
+  }
 }
