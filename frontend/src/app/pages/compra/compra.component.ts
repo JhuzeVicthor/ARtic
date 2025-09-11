@@ -39,3 +39,18 @@ export class CompraComponent implements OnInit {
     });
   }
 }
+
+/*
+  "marca": "Ford",
+  "modelo": "Ranger",
+  "ano": 2022,
+  "cor": "Prata",
+  "placa": "RGR2022",
+  "tipoCombustivel": "Diesel",
+  "portas": 4,
+  "precoAluguelPorDia": 0.00,
+  "precoVenda": 210000.00,
+  "urlImagem": "assets/carros/ford_ranger.png",
+  "disponivelParaAluguel": false,
+  "disponivelParaVenda": true
+*/

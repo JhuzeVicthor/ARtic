@@ -43,3 +43,18 @@ export class AluguelComponent implements OnInit {
     });
   }
 }
+
+/*
+    "marca": "Volkswagen",
+    "modelo": "Gol",
+    "ano": 2021,
+    "cor": "Branco",
+    "placa": "LSF5646",
+    "tipoCombustivel": "Gasolina",
+    "portas": 4,
+    "precoAluguelPorDia": 92.00,
+    "precoVenda": 0.00,
+    "urlImagem": "assets/CARaluguel/fiat_mobi.png",
+    "disponivelParaAluguel": true,
+    "disponivelParaVenda": false
+*/
