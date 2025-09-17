@@ -4,100 +4,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5efb3c27-692d-424f-b65a-84ebe7b951bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/CARaluguel/renault kwid 2024.png" afterDir="false" />
+    <list default="true" id="9f40e532-421f-4b12-81cd-71c0b1e7c9bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ARtic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ARtic.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/aluguel/aluguel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/aluguel/aluguel.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/compra/compra.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/compra/compra.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Dockerfile" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="SCSS File" />
-        <option value="HTML File" />
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;JhuzeVicthor&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "JhuzeVicthor"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/JhuzeVicthor/ARtic.git&quot;,
-    &quot;accountId&quot;: &quot;94261413-5754-4c55-9129-4131dd6e7635&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/JhuzeVicthor/ARtic.git",
+    "accountId": "94261413-5754-4c55-9129-4131dd6e7635"
   }
-}</component>
-  <component name="MavenRunner">
-    <option name="jreName" value="openjdk-24" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="30KNs421oThkzyoHUGTamILXwIW" />
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="32pYCIoth1hEfYzzpXXZOnVlJ16" />
   <component name="ProjectViewState">
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "Database connection parameters found",
-    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.ARticApplication.executor": "Run",
-    "disable.download.node.interpreter.editor.notification": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/jhuze/Documentos/ARtic/frontend/src/assets/CARaluguel",
-    "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend/src/assets/CARaluguel" />
-      <recent name="$PROJECT_DIR$/frontend/src/assets/carros" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend/src/app/pages/aluguel" />
-      <recent name="$PROJECT_DIR$/frontend/src" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="ARticApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -118,70 +78,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5efb3c27-692d-424f-b65a-84ebe7b951bd" name="Changes" comment="" />
-      <created>1753372508935</created>
+      <changelist id="9f40e532-421f-4b12-81cd-71c0b1e7c9bb" name="Changes" comment="" />
+      <created>1758118852053</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1753372508935</updated>
-      <workItem from="1753372510748" duration="2767000" />
-      <workItem from="1753447157167" duration="11973000" />
-      <workItem from="1753705560397" duration="6865000" />
-      <workItem from="1753717165880" duration="1256000" />
-      <workItem from="1753718620401" duration="362000" />
-      <workItem from="1753719023620" duration="57000" />
-      <workItem from="1753719089288" duration="908000" />
-      <workItem from="1753720015581" duration="701000" />
-      <workItem from="1753795590931" duration="1731000" />
-      <workItem from="1753797702179" duration="105000" />
-      <workItem from="1753797813287" duration="139000" />
-      <workItem from="1753797962633" duration="2272000" />
-      <workItem from="1753805380265" duration="5000" />
-      <workItem from="1753805414482" duration="10004000" />
-      <workItem from="1753889655566" duration="5403000" />
-      <workItem from="1753964136712" duration="7124000" />
-      <workItem from="1754055106557" duration="6206000" />
-      <workItem from="1755521533131" duration="407000" />
-      <workItem from="1755521957999" duration="1597000" />
-      <workItem from="1755610734211" duration="8512000" />
-      <workItem from="1755693944810" duration="11192000" />
-      <workItem from="1755710685519" duration="9000" />
-      <workItem from="1755779687990" duration="7859000" />
-      <workItem from="1755868810882" duration="6454000" />
-      <workItem from="1756129029416" duration="8328000" />
-      <workItem from="1756139471711" duration="2818000" />
-      <workItem from="1756475303001" duration="3678000" />
-      <workItem from="1756737830918" duration="9866000" />
-      <workItem from="1756817134057" duration="8115000" />
-      <workItem from="1756907145631" duration="10764000" />
-      <workItem from="1756990578514" duration="11626000" />
-      <workItem from="1757081753889" duration="7511000" />
-      <workItem from="1757336089347" duration="8150000" />
-      <workItem from="1757424158933" duration="7728000" />
-      <workItem from="1757512393189" duration="1396000" />
-      <workItem from="1757513973636" duration="64000" />
-      <workItem from="1757514046872" duration="5704000" />
-      <workItem from="1757520072888" duration="1070000" />
-      <workItem from="1757597367957" duration="4150000" />
-      <workItem from="1757601827299" duration="5921000" />
+      <updated>1758118852053</updated>
+      <workItem from="1758118854225" duration="1328000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
