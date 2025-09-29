@@ -145,10 +145,11 @@ body {
 
   .footer-section {
     .logo {
-      font-size: 1.5em;
-      margin-bottom: 15px;
+      font-size: 1.3em;
+      margin-bottom: 10px;
       .logo-image {
         height: 30px;
+        align-items: center;
       }
     }
 
@@ -174,9 +175,22 @@ body {
       padding: 0;
       margin: 0;
     }
+
     i {
       margin-right: 8px;
       color: $secondary-color;
+    }
+  }
+
+  .social-icons {
+    margin-top: 15px;
+    a {
+      margin-right: 15px;
+      color: white;
+      transition:  0.3s ease;
+      &:hover {
+        color: $primary-color;
+      }
     }
   }
 
