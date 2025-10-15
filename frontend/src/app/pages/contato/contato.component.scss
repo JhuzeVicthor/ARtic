@@ -1,0 +1,263 @@
+// Variáveis de cores
+$primary-color: #800000;
+$secondary-color: #FF4500;
+$text-dark: #333333;
+$text-light: #555555;
+$background-light: #f5f5f5;
+$white: #ffffff;
+
+.contato-container {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, $background-light 0%, $white 100%);
+  min-height: calc(100vh - 120px);
+}
+
+.contato-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.contato-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h1 {
+    color: $primary-color;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .subtitle {
+    color: $text-light;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.contato-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+// Coluna de Informações
+.info-column {
+  background: $white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+
+  h2 {
+    color: $primary-color;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid $secondary-color;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $background-light;
+    transform: translateX(5px);
+  }
+
+  .info-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  .info-content {
+    strong {
+      color: $primary-color;
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    p {
+      color: $text-light;
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+}
+
+.map-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+
+  h3 {
+    color: $primary-color;
+    margin-bottom: 1rem;
+  }
+}
+
+.map-placeholder {
+  background: $background-light;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: $text-light;
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+}
+
+// Coluna do Formulário
+.form-column {
+  background: $white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+
+  h2 {
+    color: $primary-color;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid $secondary-color;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: $text-dark;
+    font-size: 1rem;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: $white;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.1);
+    }
+
+    &.is-invalid {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 10%) 100%);
+  color: $white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    background: linear-gradient(135deg, darken($primary-color, 5%) 0%, darken($primary-color, 15%) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(128, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  font-weight: 500;
+
+  &.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  &.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+}
+
+// Responsividade
+@media (max-width: 968px) {
+  .contato-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contato-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contato-container {
+    padding: 2rem 0;
+  }
+
+  .contato-content {
+    padding: 0 1rem;
+  }
+
+  .info-column,
+  .form-column {
+    padding: 1.5rem;
+  }
+
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+
+    .info-icon {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

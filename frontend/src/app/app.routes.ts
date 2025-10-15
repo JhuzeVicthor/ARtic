@@ -4,6 +4,7 @@ import { CarroListaComponent } from './pages/carro-lista/carro-lista.component';
 import { CarroFormComponent } from './pages/carro-form/carro-form.component';
 import { AluguelComponent } from './pages/aluguel/aluguel.component';
 import { CompraComponent } from './pages/compra/compra.component';
+import {ContatoComponent} from './pages/contato/contato.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,5 +14,6 @@ export const routes: Routes = [
   { path: 'carros/:id', component: CarroListaComponent },
   { path: 'admin/carros', component: CarroListaComponent },
   { path: 'aluguel', component: AluguelComponent },
-  { path: 'compra', component: CompraComponent }
+  { path: 'compra', component: CompraComponent },
+  { path: 'contato', component: ContatoComponent }
 ];

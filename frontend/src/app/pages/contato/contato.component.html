@@ -1,0 +1,168 @@
+<div class="contato-container">
+  <div class="contato-content">
+
+    <!-- Cabeçalho -->
+    <div class="contato-header">
+      <h1>Entre em Contato Conosco</h1>
+      <p class="subtitle">Estamos aqui para ajudar você a encontrar a solução perfeita.</p>
+    </div>
+
+    <div class="contato-grid">
+
+      <!-- Coluna de Informações -->
+      <div class="info-column">
+        <h2>Informações de Contato</h2>
+
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div class="info-content">
+            <strong>Telefone</strong>
+            <p>+55 (82) 99990-6795</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📧</div>
+          <div class="info-content">
+            <strong>Email</strong>
+            <p>contato.com.br</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div class="info-content">
+            <strong>Endereço</strong>
+            <p>Av. Comendador Gustavo Paiva, 3367 - Cruz das Almas</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">🕒</div>
+          <div class="info-content">
+            <strong>Horário de Atendimento</strong>
+            <p>Segunda a Sexta, das 8h às 18h</p>
+          </div>
+        </div>
+
+        <!-- Mapa placeholder -->
+        <div class="map-section">
+          <h3>Mapa da Localização</h3>
+          <div class="map-placeholder">
+            <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2937.224745795858!2d-35.70135988337561!3d-9.632705167172302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9630898f7a65df%3A0xea461a1e1fec7f30!2sAfya%20Macei%C3%B3!5e0!3m2!1spt-BR!2sbr!4v1760544383105!5m2!1spt-BR!2sbr"
+                       width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna do Formulário -->
+      <div class="form-column">
+        <h2>Envie-nos uma Mensagem</h2>
+
+        <form [formGroup]="contatoForm" (ngSubmit)="onSubmit()">
+
+          <!-- Nome Completo -->
+          <div class="form-group">
+            <label for="fullName">Nome Completo</label>
+            <input
+              type="text"
+              id="fullName"
+              formControlName="fullName"
+              placeholder="Seu nome completo"
+              [ngClass]="{'is-invalid': submitted && f['fullName'].errors}">
+
+            @if (submitted && f['fullName'].errors) {
+              <div class="invalid-feedback">
+                @if (f['fullName'].errors['required']) {
+                  <div>Nome completo é obrigatório</div>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              placeholder="seu@email.com"
+              [ngClass]="{'is-invalid': submitted && f['email'].errors}">
+
+            @if (submitted && f['email'].errors) {
+              <div class="invalid-feedback">
+                @if (f['email'].errors['required']) {
+                  <div>Email é obrigatório</div>
+                }
+                @if (f['email'].errors['email']) {
+                  <div>Email inválido</div>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Assunto -->
+          <div class="form-group">
+            <label for="subject">Assunto</label>
+            <select
+              id="subject"
+              formControlName="subject"
+              [ngClass]="{'is-invalid': submitted && f['subject'].errors}">
+              <option value="">Selecione um assunto</option>
+              <option value="duvida">Dúvida</option>
+              <option value="sugestao">Sugestão</option>
+              <option value="reclamacao">Reclamação</option>
+              <option value="orcamento">Orçamento</option>
+              <option value="outro">Outro</option>
+            </select>
+
+            @if (submitted && f['subject'].errors) {
+              <div class="invalid-feedback">
+                @if (f['subject'].errors['required']) {
+                  <div>Assunto é obrigatório</div>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Mensagem -->
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea
+              id="message"
+              formControlName="message"
+              placeholder="Descreva sua dúvida ou solicitação..."
+              rows="5"
+              [ngClass]="{'is-invalid': submitted && f['message'].errors}"></textarea>
+
+            @if (submitted && f['message'].errors) {
+              <div class="invalid-feedback">
+                @if (f['message'].errors['required']) {
+                  <div>Mensagem é obrigatória</div>
+                }
+                @if (f['message'].errors['minlength']) {
+                  <div>A mensagem deve ter pelo menos 10 caracteres</div>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Botão de Enviar -->
+          <button type="submit" class="btn-primary">
+            Enviar Mensagem
+          </button>
+
+          <!-- Mensagens de Feedback -->
+          @if (successMessage) {
+            <div class="alert alert-success mt-3">{{ successMessage }}</div>
+          }
+
+          @if (errorMessage) {
+            <div class="alert alert-danger mt-3">{{ errorMessage }}</div>
+          }
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
