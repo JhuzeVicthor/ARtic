@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f40e532-421f-4b12-81cd-71c0b1e7c9bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/Sobre/sobre.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/Sobre/sobre.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/Sobre/sobre.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/SobrePage/Carros em um showroom moderno.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/SobrePage/Jhuze Victhor.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-detalhes/carro-detalhes.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-detalhes/carro-detalhes.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-detalhes/carro-detalhes.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/compra/compra.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/compra/compra.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +121,7 @@
       <workItem from="1762256949194" duration="612000" />
       <workItem from="1762438399308" duration="6597000" />
       <workItem from="1762531704006" duration="610000" />
-      <workItem from="1762776802038" duration="4417000" />
+      <workItem from="1762776802038" duration="10219000" />
     </task>
     <servers />
   </component>

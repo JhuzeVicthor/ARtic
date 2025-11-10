@@ -1,0 +1,388 @@
+@use "sass:color"; // IMPORTANTE: adicionar esta linha no topo
+
+// Definição das variáveis de cor diretamente aqui (ou importe de um arquivo global)
+$primary-color: #800000;
+$secondary-color: #FF4500;
+$text-dark: #333333;
+$text-light: #555555;
+$background-light: #f5f5f5;
+$white: #ffffff;
+$border-color: #e0e0e0;
+$success-color: #28a745;
+$error-color: #dc3545;
+
+.car-details-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.main-content-wrapper {
+  display: flex;
+  flex-wrap: wrap; // Permite quebrar em telas menores
+  gap: 30px;
+  margin-bottom: 60px;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 30px; // Adiciona padding ao wrapper principal
+}
+
+.car-images-section {
+  flex: 1.5; // Ocupa mais espaço que a seção de info
+  min-width: 350px; // Largura mínima
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .main-image {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .status-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      color: $white;
+      font-size: 0.9em;
+      &.available {
+        background-color: $success-color;
+      }
+      &.unavailable {
+        background-color: $error-color;
+      }
+    }
+  }
+
+  .thumbnail-images {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto; // Permite scroll horizontal se houver muitas miniaturas
+    padding-bottom: 10px; // Para evitar que o scrollbar esconda a borda
+
+    img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+
+      &:hover, &.active {
+        border-color: $primary-color;
+      }
+    }
+  }
+}
+
+.car-info-options-section {
+  flex: 1; // Ocupa menos espaço que a seção de imagens
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Ajusta espaçamento interno
+}
+
+.car-info-header {
+  margin-bottom: 20px;
+  h1 {
+    font-size: 2.2em;
+    color: $text-dark;
+    margin-bottom: 5px;
+  }
+  .car-subtitle {
+    font-size: 1.1em;
+    color: $text-light;
+  }
+}
+
+.car-pricing {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid $border-color;
+
+  .pricing-option {
+    span {
+      display: block;
+      font-size: 0.9em;
+      color: $text-light;
+      margin-bottom: 5px;
+    }
+    p {
+      font-size: 1.6em;
+      font-weight: bold;
+      color: $primary-color;
+    }
+    &:last-child p {
+      color: $secondary-color; // Cor diferente para o preço de venda
+    }
+  }
+}
+
+.car-specifications {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // Duas colunas para as specs
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid $border-color;
+
+  .spec-item {
+    display: flex;
+    align-items: center;
+    color: $text-light;
+    font-size: 0.95em;
+    i {
+      color: $primary-color;
+      margin-right: 10px;
+      font-size: 1.1em;
+    }
+  }
+}
+
+.car-description {
+  margin-bottom: 30px;
+  h3 {
+    font-size: 1.4em;
+    color: $text-dark;
+    margin-bottom: 10px;
+  }
+  p {
+    color: $text-light;
+    line-height: 1.6;
+  }
+}
+
+.car-options-card {
+  background-color: $background-light;
+  border-radius: 8px;
+  padding: 25px;
+
+  .options-toggle {
+    display: flex;
+    margin-bottom: 25px;
+    button {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid $primary-color;
+      background-color: transparent;
+      color: $primary-color;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:first-child {
+        border-radius: 5px 0 0 5px;
+      }
+      &:last-child {
+        border-radius: 0 5px 5px 0;
+      }
+      &.active {
+        background-color: $primary-color;
+        color: $white;
+      }
+      &:hover:not(.active) {
+        background-color: color.adjust($primary-color,  $lightness: -45%);
+      }
+    }
+  }
+
+  h3 {
+    font-size: 1.3em;
+    color: $text-dark;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+    label {
+      display: block;
+      font-size: 0.9em;
+      color: $text-light;
+      margin-bottom: 5px;
+    }
+    input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $border-color;
+      border-radius: 5px;
+      font-size: 1em;
+      box-sizing: border-box;
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+      }
+    }
+  }
+
+  .total-estimate {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed $border-color;
+    span {
+      font-size: 1.2em;
+      font-weight: bold;
+      &:first-child {
+        color: $text-dark;
+      }
+      &:last-child {
+        color: $secondary-color; // Destaque para o preço total
+      }
+    }
+  }
+
+  .action-btn {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 25px;
+
+    &.primary-btn {
+      background-color: $primary-color;
+      color: $white;
+      &:hover {
+        background-color: color.adjust($primary-color, $lightness: -10%);
+      }
+    }
+    &.secondary-btn {
+      background-color: $secondary-color;
+      color: $white;
+      &:hover {
+        background-color: color.adjust($secondary-color, $lightness: -10%);
+      }
+    }
+  }
+}
+
+// Seção Carros Similares
+.similar-cars-section {
+  margin-top: 80px;
+  padding: 0 20px;
+
+  h2 {
+    font-size: 2em;
+    color: $text-dark;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .similar-cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+
+    .car-card {
+      background-color: $white;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+
+      img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      h3 {
+        font-size: 1.3em;
+        color: $text-dark;
+        margin: 15px 10px 10px 10px;
+      }
+
+      .car-card-pricing {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 15px;
+
+        p {
+          margin: 0;
+          font-weight: bold;
+        }
+        .rental-price {
+          color: $primary-color;
+          font-size: 1.1em;
+        }
+        .sale-price {
+          color: $secondary-color;
+          font-size: 0.9em;
+          text-decoration: none; // Remove sublinhado se houver
+        }
+      }
+
+      .view-details-btn {
+        display: block;
+        background-color: $primary-color;
+        color: $white;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 0 0 8px 8px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: color.adjust($primary-color, $lightness: -10%);
+        }
+      }
+    }
+  }
+}
+
+// Responsividade
+@media (max-width: 992px) {
+  .main-content-wrapper {
+    flex-direction: column;
+    padding: 20px; // Ajusta padding para telas menores
+  }
+  .car-images-section, .car-info-options-section {
+    min-width: unset; // Remove o min-width para flexibilidade total
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .car-details-container {
+    margin: 20px auto;
+  }
+  .car-info-header h1 {
+    font-size: 1.8em;
+  }
+  .car-pricing {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .car-specifications {
+    grid-template-columns: 1fr; // Uma coluna em telas menores
+  }
+  .similar-cars-grid {
+    grid-template-columns: 1fr; // Uma coluna para carros similares
+  }
+  .car-options-card .options-toggle button {
+    font-size: 0.9em;
+    padding: 10px 10px;
+  }
+}
