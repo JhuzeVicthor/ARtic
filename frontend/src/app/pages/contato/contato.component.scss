@@ -1,3 +1,6 @@
+@use "sass:color";
+
+
 // Variáveis de cores
 $primary-color: #800000;
 $secondary-color: #FF4500;
@@ -182,7 +185,7 @@ $white: #ffffff;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 10%) 100%);
+  background: linear-gradient(135deg, $primary-color 0%, color.adjust($primary-color, $lightness: -10%) 100%);
   color: $white;
   border: none;
   padding: 1rem 2rem;
@@ -196,7 +199,7 @@ $white: #ffffff;
   letter-spacing: 0.5px;
 
   &:hover {
-    background: linear-gradient(135deg, darken($primary-color, 5%) 0%, darken($primary-color, 15%) 100%);
+    background: linear-gradient(135deg, color.adjust($primary-color, $lightness: -5%) 0%, color.adjust($primary-color, $lightness: -15%) 100%);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(128, 0, 0, 0.3);
   }

@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f40e532-421f-4b12-81cd-71c0b1e7c9bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/Sobre/sobre.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/Sobre/sobre.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/Sobre/sobre.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/SobrePage/Carros em um showroom moderno.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/SobrePage/Jhuze Victhor.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/contato/contato.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,29 +45,31 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ARticApplication.executor&quot;: &quot;Run&quot;,
-    &quot;disable.download.node.interpreter.editor.notification&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/jhuze/Documentos/ARtic/frontend/src/assets/CARaluguel&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ARticApplication.executor": "Debug",
+    "disable.download.node.interpreter.editor.notification": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/jhuze/Documentos/ARtic/frontend/src/assets/SobrePage",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/assets/SobrePage" />
+      <recent name="$PROJECT_DIR$/frontend/src/assets/sobrePage" />
       <recent name="$PROJECT_DIR$/frontend/src/assets/CARaluguel" />
     </key>
   </component>
@@ -105,7 +112,20 @@
       <workItem from="1759754287120" duration="724000" />
       <workItem from="1759932943059" duration="172000" />
       <workItem from="1760452499559" duration="5429000" />
-      <workItem from="1760538695980" duration="5788000" />
+      <workItem from="1760538695980" duration="6681000" />
+      <workItem from="1760613701495" duration="34000" />
+      <workItem from="1760970659585" duration="3583000" />
+      <workItem from="1761233071324" duration="2259000" />
+      <workItem from="1761313816473" duration="1818000" />
+      <workItem from="1761745508773" duration="8766000" />
+      <workItem from="1761824115891" duration="804000" />
+      <workItem from="1761911304858" duration="663000" />
+      <workItem from="1762173948929" duration="13000" />
+      <workItem from="1762181136205" duration="2265000" />
+      <workItem from="1762256949194" duration="612000" />
+      <workItem from="1762438399308" duration="6597000" />
+      <workItem from="1762531704006" duration="610000" />
+      <workItem from="1762776802038" duration="4417000" />
     </task>
     <servers />
   </component>
