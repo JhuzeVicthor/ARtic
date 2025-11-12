@@ -52,7 +52,7 @@
           R$ {{ carro.precoAluguelPorDia | currency:'BRL':'symbol':'1.2-2' }}/dia
           <span class="rating">4.8 <i class="fas fa-star"></i></span>
         </div>
-        <button class="btn btn-details" [routerLink]="['/carros', carro.id]">Ver Detalhes</button>
+        <button class="btn btn-details" [routerLink]="['/carros', carro.id]" (click)="scrollToTop()">Ver Detalhes</button>
       </div>
       <div *ngIf="carrosDestaqueAluguel.length === 0" class="no-cars-message">
         Nenhum carro disponível para aluguel no momento.
@@ -79,7 +79,7 @@
         <div class="car-price">
           R$ {{ carro.precoVenda | currency:'BRL':'symbol':'1.2-2' }}
         </div>
-        <button class="btn btn-details" [routerLink]="['/carros', carro.id]">Ver Detalhes</button>
+        <button class="btn btn-details" [routerLink]="['/carros', carro.id]" (click)="scrollToTop()">Ver Detalhes</button>
       </div>
       <div *ngIf="carrosAVenda.length === 0" class="no-cars-message">
         Nenhum carro disponível para venda no momento.

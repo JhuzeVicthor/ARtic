@@ -2,41 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-interface Car {
-  id: number;
-  name: string;
-  year: number;
-  category: string;
-  performance: string;
-  status: string;
-  rentalPrice: number;
-  salePrice: number;
-  color: string;
-  fuel: string;
-  doors: number;
-  mileage: number;
-  transmission: string;
-  seats: number;
-  description: string;
-  mainImage: string;
-  gallery: string[];
-  features: string[]; // Exemplo: Ar Condicionado, Vidros Elétricos
-  isAcquired?: boolean; // Se o carro já foi alugado ou vendido
-}
+import { Carro } from '../../interface/carro.model';
+import { CarroService } from '../../service/carro.service';
 
 @Component({
   selector: 'app-car-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterLink,],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterLink],
   templateUrl: './carro-detalhes.component.html',
   styleUrls: ['carro-detalhes.component.scss']
 })
 export class CarroDetalhesComponent implements OnInit {
   carId!: number;
-  car!: Car;
+  carro: Carro = this.getEmptyCarro();
   mainCarImage!: string;
-  similarCars: Car[] = [];
+  similarCars: Carro[] = [];
 
   currentOption: 'aluguel' | 'compra' = 'aluguel';
 
@@ -47,45 +27,159 @@ export class CarroDetalhesComponent implements OnInit {
   rentalDays: number = 0;
   totalRentalPrice: number = 0;
 
+  private previousUrl: string = '';
+
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private carroService: CarroService
   ) { }
 
   ngOnInit(): void {
+    this.detectPreviousPage();
     this.route.paramMap.subscribe(params => {
       this.carId = Number(params.get('id'));
       this.loadCarDetails(this.carId);
-      this.loadSimilarCars(); // Carrega carros similares
+      this.loadSimilarCars();
     });
   }
 
-  loadCarDetails(id: number): void {
-    // Simula a busca de detalhes do carro via API
-    // Em um projeto real, você usaria um CarService para fazer uma requisição HTTP
-    const allCars: Car[] = this.getMockCars(); // Pega todos os carros mock
-    const foundCar = allCars.find(c => c.id === id);
+  private getEmptyCarro(): Carro {
+    return {
+      id: 0,
+      marca: '',
+      modelo: '',
+      ano: 0,
+      cor: '',
+      placa: '',
+      tipoCombustivel: '',
+      portas: 0,
+      precoAluguelPorDia: 0,
+      precoVenda: 0,
+      urlImagem: '',
+      disponivelParaAluguel: false,
+      disponivelParaVenda: false
+    };
+  }
 
-    if (foundCar) {
-      this.car = foundCar;
-      this.mainCarImage = this.car.mainImage;
+  private setDefaultOptionBasedOnCarAvailability(): void {
+    // Se o carro não estiver disponível para aluguel, mostra compra por padrão
+    if (!this.carro.disponivelParaAluguel && this.carro.disponivelParaVenda) {
+      this.currentOption = 'compra';
+    }
+    // Caso contrário, mantém aluguel como padrão
+  }
+
+
+  private detectPreviousPage(): void {
+    // Pega a URL anterior do histórico de navegação
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.previousNavigation) {
+      this.previousUrl = navigation.previousNavigation.finalUrl?.toString() || '';
+
+      // Define a aba padrão baseada na página anterior
+      if (this.previousUrl.includes('/compra')) {
+        this.currentOption = 'compra';
+      } else if (this.previousUrl.includes('/aluguel')) {
+        this.currentOption = 'aluguel';
+      } else {
+        // Se não veio de uma página específica, usa a disponibilidade do carro
+        this.setDefaultOptionBasedOnCarAvailability();
+      }
     } else {
-      console.error('Carro não encontrado!');
-      this.router.navigate(['/carros']); // Redireciona se o carro não for encontrado
+      this.setDefaultOptionBasedOnCarAvailability();
     }
   }
 
-  loadSimilarCars(): void {
-    // Simula a busca de carros similares
-    // Em um projeto real, isso seria uma chamada de API, talvez filtrando por categoria ou marca
-    const allCars: Car[] = this.getMockCars();
-    this.similarCars = allCars
-      .filter(c => c.id !== this.carId) // Exclui o carro atual
-      .slice(0, 3); // Pega os 3 primeiros como similares
+  private adjustDefaultOptionAfterCarLoad(): void {
+    // Se veio de uma página específica, mantém a escolha
+    if (this.previousUrl.includes('/compra') || this.previousUrl.includes('/aluguel')) {
+      return;
+    }
+
+    // Se não veio de página específica, ajusta baseado na disponibilidade
+    if (!this.carro.disponivelParaAluguel && this.carro.disponivelParaVenda) {
+      this.currentOption = 'compra';
+    } else if (this.carro.disponivelParaAluguel && !this.carro.disponivelParaVenda) {
+      this.currentOption = 'aluguel';
+    }
+    // Se estiver disponível para ambos, mantém o padrão (aluguel)
   }
 
-  changeMainImage(image: string): void {
-    this.mainCarImage = image;
+
+
+
+  loadCarDetails(id: number): void {
+    this.carroService.getCarroById(id).subscribe({
+      next: (carro) => {
+        this.carro = carro;
+        this.mainCarImage = this.carro.urlImagem || 'assets/placeholder-carro.jpg';
+        this.adjustDefaultOptionAfterCarLoad();
+        console.log('Carro carregado:', this.carro);
+      },
+      error: (erro) => {
+        console.error('Erro ao carregar detalhes do carro:', erro);
+        alert('Erro ao carregar detalhes do carro. Tente novamente.');
+        this.router.navigate(['/aluguel']);
+      }
+    });
+  }
+
+
+  loadSimilarCars(): void {
+    this.carroService.getAllCarros(true, false).subscribe({
+      next: (carros) => {
+        this.similarCars = carros
+          .filter(c =>
+            c.id !== this.carId &&
+            c.disponivelParaAluguel === true
+          )
+          .slice(0, 3);
+        console.log('Carros similares carregados:', this.similarCars);
+      },
+      error: (erro) => {
+        console.error('Erro ao carregar carros similares:', erro);
+      }
+    });
+  }
+
+  // Métodos para gerar informações adicionais baseadas nos dados reais
+  getCategory(): string {
+    // Baseia a categoria no tipo de carro
+    if (this.carro.precoAluguelPorDia > 200) return 'SUV de luxo';
+    if (this.carro.precoAluguelPorDia > 100) return 'Sedan Premium';
+    return 'Compacto';
+  }
+
+  scrollToTop(): void {
+    window.scrollTo(0, 0);
+  }
+
+  getPerformance(): string {
+    // Baseia a performance no preço
+    if (this.carro.precoAluguelPorDia > 200) return 'performance excepcional';
+    if (this.carro.precoAluguelPorDia > 100) return 'conforto e tecnologia';
+    return 'economia e eficiência';
+  }
+
+  getMileage(): number {
+    // Quilometragem padrão baseada no ano
+    const currentYear = new Date().getFullYear();
+    const age = currentYear - this.carro.ano;
+    return age <= 1 ? 15000 : 35000;
+  }
+
+  getTransmission(): string {
+    // Assume automático para carros mais caros
+    return this.carro.precoAluguelPorDia > 150 ? 'Automática' : 'Manual';
+  }
+
+  getSeats(): number {
+    return this.carro.portas === 2 ? 2 : 5; // Assume 5 lugares para 4 portas
+  }
+
+  getDescription(): string {
+    return `O ${this.carro.marca} ${this.carro.modelo} ${this.carro.ano} combina elegância, performance e tecnologia de ponta. Com design moderno, interior confortável e sistemas de segurança avançados, oferece uma experiência de condução incomparável na cor ${this.carro.cor}. Perfecto para quem busca qualidade e conforto.`;
   }
 
   calculateTotalRental(): void {
@@ -96,14 +190,13 @@ export class CarroDetalhesComponent implements OnInit {
       if (_return <= pickup) {
         this.rentalDays = 0;
         this.totalRentalPrice = 0;
-        // Opcional: mostrar um erro para o usuário
         alert('A data de devolução deve ser posterior à data de retirada.');
         return;
       }
 
       const diffTime = Math.abs(_return.getTime() - pickup.getTime());
       this.rentalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      this.totalRentalPrice = this.rentalDays * this.car.rentalPrice;
+      this.totalRentalPrice = this.rentalDays * this.carro.precoAluguelPorDia;
     } else {
       this.rentalDays = 0;
       this.totalRentalPrice = 0;
@@ -115,110 +208,13 @@ export class CarroDetalhesComponent implements OnInit {
       alert('Por favor, selecione as datas de retirada e devolução válidas.');
       return;
     }
-    // Lógica para alugar o carro
-    console.log(`Alugando ${this.car.name} de ${this.rentalDates.pickup} a ${this.rentalDates.return}. Total: R$ ${this.totalRentalPrice}`);
-    alert(`Carro ${this.car.name} alugado com sucesso!`);
-    // Redirecionar para uma página de confirmação ou dashboard do usuário
-    // this.router.navigate(['/aluguel/confirmacao', this.car.id]);
+
+    console.log(`Alugando ${this.carro.marca} ${this.carro.modelo} de ${this.rentalDates.pickup} a ${this.rentalDates.return}. Total: R$ ${this.totalRentalPrice}`);
+    alert(`Carro ${this.carro.marca} ${this.carro.modelo} alugado com sucesso!`);
   }
 
   buyCar(): void {
-    // Lógica para manifestar interesse na compra
-    console.log(`Interesse em comprar ${this.car.name}.`);
-    alert(`Obrigado pelo seu interesse em ${this.car.name}! Entraremos em contato em breve.`);
-    // Redirecionar para uma página de contato ou formulário específico
-    // this.router.navigate(['/contato', { carId: this.car.id }]);
-  }
-
-  // Dados mock para simulação
-  private getMockCars(): Car[] {
-    return [
-      {
-        id: 1,
-        name: 'BMW X3',
-        year: 2021,
-        category: 'SUV de luxo',
-        performance: 'performance excepcional',
-        status: 'Disponível',
-        rentalPrice: 250.00,
-        salePrice: 285000.00,
-        color: 'Branco',
-        fuel: 'Gasolina',
-        doors: 4,
-        mileage: 25000,
-        transmission: 'Automática',
-        seats: 5,
-        description: 'O BMW X3 2021 combina elegância, performance e tecnologia de ponta. Com motor potente, interior luxuoso e sistemas de segurança avançados, oferece uma experiência de condução incomparável para quem busca qualidade e conforto.',
-        mainImage: 'assets/images/car_details_main.jpg',
-        gallery: [
-          'assets/images/car_details_thumb1.jpg',
-          'assets/images/car_details_thumb2.jpg',
-          'assets/images/car_details_thumb3.jpg',
-          'assets/images/car_details_thumb4.jpg',
-          'assets/images/car_details_thumb5.jpg',
-        ],
-        features: ['Ar Condicionado', 'Direção Hidráulica', 'Vidros Elétricos', 'Airbags', 'ABS', 'Teto Solar']
-      },
-      {
-        id: 2,
-        name: 'Audi Q5',
-        year: 2020,
-        category: 'SUV Premium',
-        performance: 'conforto e tecnologia',
-        status: 'Disponível',
-        rentalPrice: 230.00,
-        salePrice: 265000.00,
-        color: 'Prata',
-        fuel: 'Gasolina',
-        doors: 4,
-        mileage: 30000,
-        transmission: 'Automática',
-        seats: 5,
-        description: 'Audi Q5 2020: Um SUV que redefine luxo e performance, perfeito para a cidade ou aventuras.',
-        mainImage: 'assets/images/similar_audi_q5.jpg',
-        gallery: [],
-        features: ['Ar Condicionado', 'Bancos de Couro', 'Sensor de Estacionamento']
-      },
-      {
-        id: 3,
-        name: 'Mercedes GLC',
-        year: 2021,
-        category: 'SUV de Luxo',
-        performance: 'elegância e potência',
-        status: 'Disponível',
-        rentalPrice: 280.00,
-        salePrice: 295000.00,
-        color: 'Preto',
-        fuel: 'Diesel',
-        doors: 4,
-        mileage: 20000,
-        transmission: 'Automática',
-        seats: 5,
-        description: 'Mercedes GLC 2021: Design arrojado e tecnologia avançada para uma experiência de condução superior.',
-        mainImage: 'assets/images/similar_mercedes_glc.jpg',
-        gallery: [],
-        features: ['Ar Condicionado', 'Teto Solar Panorâmico', 'Câmera de Ré']
-      },
-      {
-        id: 4,
-        name: 'Volvo XC60',
-        year: 2020,
-        category: 'SUV Compacto',
-        performance: 'segurança e estilo',
-        status: 'Disponível',
-        rentalPrice: 240.00,
-        salePrice: 275000.00,
-        color: 'Azul',
-        fuel: 'Híbrido',
-        doors: 4,
-        mileage: 28000,
-        transmission: 'Automática',
-        seats: 5,
-        description: 'Volvo XC60 2020: Combinação perfeita de segurança escandinava, design moderno e alta performance.',
-        mainImage: 'assets/images/similar_volvo_xc60.jpg',
-        gallery: [],
-        features: ['Ar Condicionado', 'Piloto Automático Adaptativo', 'Assistente de Faixa']
-      }
-    ];
+    console.log(`Interesse em comprar ${this.carro.marca} ${this.carro.modelo}.`);
+    alert(`Obrigado pelo seu interesse em ${this.carro.marca} ${this.carro.modelo}! Entraremos em contato em breve.`);
   }
 }

@@ -27,7 +27,7 @@
         <div class="preco-aluguel">
           <strong>Preço por Dia:</strong> {{ carro.precoAluguelPorDia | currency:'BRL' }}
         </div>
-        <button class="btn-alugar">Alugar Agora</button>
+        <button type="button" [routerLink]="['/carros', carro.id]" class="btn-alugar">Alugar Agora</button>
       </div>
     </div>
   </div>

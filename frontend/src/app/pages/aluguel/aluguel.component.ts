@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {Carro} from '../../interface/carro.model';
 import {CarroService} from '../../service/carro.service';
 import {CommonModule} from '@angular/common';
+import {RouterLink} from '@angular/router';
 
 
 @Component({
   selector: 'app-aluguel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './aluguel.component.html',
   styleUrls: ['./aluguel.component.scss']
 })
@@ -33,7 +34,10 @@ export class AluguelComponent implements OnInit {
           carro.disponivelParaVenda !== true
         );
         this.carregando = false;
-        console.log('Carros para aluguel carregados', this.carrosAluguel);
+        console.log('Carros para aluguel carregados:', this.carrosAluguel);
+        this.carrosAluguel.forEach(carro => {
+          console.log(`Carro: ${carro.marca} ${carro.modelo}, ID: ${carro.id}`);
+        });
       },
       error: (erro) => {
         console.error('Erro ao buscar carros para aluguel: ', erro);

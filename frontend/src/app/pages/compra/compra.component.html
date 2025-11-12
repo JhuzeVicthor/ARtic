@@ -1,24 +1,35 @@
 <div class="compra-container">
   <h1>Carros Disponíveis para Compra</h1>
 
-  <div *ngIf="loading" class="message">Carregando carros para compra...</div>
-  <div *ngIf="error" class="error-message">{{ error }}</div>
+  <div *ngIf="carregando" class="mensagem">Carregando carros para venda...</div>
+  <div *ngIf="error" class="mensagem-erro">{{ error }}</div>
 
-  <div *ngIf="!loading && !error && carrosCompra.length === 0" class="message">
-    Nenhum carro disponível para compra no momento.
+  <div *ngIf="!carregando && !error && carrosCompra.length === 0" class="mensagem">
+    Nenhum carro disponível para venda no momento.
   </div>
 
-  <div *ngIf="!loading && !error && carrosCompra.length > 0" class="carro-grid">
-    <div *ngFor="let carro of carrosCompra" class="carro-card">
-      <div class="carro-image">
-        <img [src]="carro.urlImagem || 'assets/placeholder-car.jpg'" alt="{{ carro.marca }} {{ carro.modelo }}">
+  <div *ngIf="!carregando && !error && carrosCompra.length > 0" class="grade-carros">
+    <div *ngFor="let carro of carrosCompra" class="cartao-carro">
+      <div class="imagem-carro">
+        <img [src]="carro.urlImagem || 'assets/placeholder-carro.jpg'"
+             alt="{{ carro.marca }} {{ carro.modelo }}"
+             onerror="this.src='assets/placeholder-carro.jpg'">
       </div>
-      <div class="carro-info">
+      <div class="info-carro">
         <h2>{{ carro.marca }} {{ carro.modelo }}</h2>
-        <p><strong>Ano:</strong> {{ carro.ano }}</p>
-        <p><strong>Cor:</strong> {{ carro.cor }}</p>
-        <p><strong>Preço de Venda:</strong> {{ carro.precoVenda | currency:'BRL' }}</p>
-        <button class="btn-comprar">Comprar</button>
+        <div class="detalhes-carro">
+          <p><strong>Ano:</strong> {{ carro.ano }}</p>
+          <p><strong>Cor:</strong> {{ carro.cor }}</p>
+          <p><strong>Placa:</strong> {{ carro.placa }}</p>
+          <p><strong>Combustível:</strong> {{ carro.tipoCombustivel }}</p>
+          <p><strong>Portas:</strong> {{ carro.portas }}</p>
+        </div>
+        <div class="preco-venda">
+          <strong>Preço de Venda:</strong> {{ carro.precoVenda | currency:'BRL' }}
+        </div>
+        <button type="button" [routerLink]="['/carros', carro.id]" class="btn-comprar">
+          Comprar Agora
+        </button>
       </div>
     </div>
   </div>

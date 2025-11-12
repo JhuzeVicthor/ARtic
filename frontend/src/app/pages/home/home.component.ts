@@ -57,6 +57,10 @@ export class HomeComponent implements  OnInit {
     this.router.navigate(['/api/carros'], {queryParams: {tipo: 'Comprar'} });
   }
 
+  scrollToTop(): void {
+    window.scrollTo(0, 0);
+  }
+
   buscarVeiculo(): void {
     console.log('Buscar veículo:', { tipoServico: this.tipoService, marca: this.marca, categoria: this.categoria });
     this.router.navigate(['/carros'], { queryParams: { tipo: this.tipoService, marca: this.marca, categoria: this.categoria } });

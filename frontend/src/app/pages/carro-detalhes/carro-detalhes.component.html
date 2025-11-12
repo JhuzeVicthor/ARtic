@@ -2,97 +2,157 @@
   <div class="main-content-wrapper">
     <div class="car-images-section">
       <div class="main-image">
-        <img [src]="mainCarImage" alt="BMW X3 2021" class="img-fluid">
-        <span class="status-badge" [ngClass]="car.status === 'Disponível' ? 'available' : 'unavailable'">
-          {{ car.status }}
+        <img [src]="mainCarImage" [alt]="carro.marca + ' ' + carro.modelo" class="img-fluid">
+        <span class="status-badge available" *ngIf="carro.disponivelParaAluguel">
+          Disponível
         </span>
-      </div>
-      <div class="thumbnail-images">
-        <img *ngFor="let img of car.gallery" [src]="img" (click)="changeMainImage(img)" [class.active]="img === mainCarImage" alt="Miniatura do carro">
       </div>
     </div>
 
     <div class="car-info-options-section">
       <div class="car-info-header">
-        <h1>{{ car.name }} {{ car.year }}</h1>
-        <p class="car-subtitle">{{ car.category }} com {{ car.performance }} e tecnologia avançada.</p>
+        <h1>{{ carro.marca }} {{ carro.modelo }} {{ carro.ano }}</h1>
+        <p class="car-subtitle">{{ getCategory() }} com {{ getPerformance() }} e tecnologia avançada.</p>
       </div>
 
       <div class="car-pricing">
-        <div class="pricing-option">
+        <div class="pricing-option" *ngIf="carro.disponivelParaAluguel">
           <span>Aluguel</span>
-          <p>R$ {{ car.rentalPrice | number:'1.2-2' }}/dia</p>
+          <p>R$ {{ carro.precoAluguelPorDia | number:'1.2-2' }}/dia</p>
         </div>
-        <div class="pricing-option">
+        <div class="pricing-option" *ngIf="carro.disponivelParaVenda">
           <span>Venda</span>
-          <p>R$ {{ car.salePrice | number:'1.2-2' }}</p>
+          <p>R$ {{ carro.precoVenda | number:'1.2-2' }}</p>
         </div>
       </div>
 
       <div class="car-specifications">
         <div class="spec-group">
-          <div class="spec-item"><i class="fas fa-calendar-alt"></i> Ano: {{ car.year }}</div>
-          <div class="spec-item"><i class="fas fa-palette"></i> Cor: {{ car.color }}</div>
+          <div class="spec-item"><i class="fas fa-calendar-alt"></i> Ano: {{ carro.ano }}</div>
+          <div class="spec-item"><i class="fas fa-palette"></i> Cor: {{ carro.cor }}</div>
         </div>
         <div class="spec-group">
-          <div class="spec-item"><i class="fas fa-gas-pump"></i> Gasolina</div>
-          <div class="spec-item"><i class="fas fa-door-open"></i> {{ car.doors }} Portas</div>
+          <div class="spec-item"><i class="fas fa-gas-pump"></i> {{ carro.tipoCombustivel }}</div>
+          <div class="spec-item"><i class="fas fa-door-open"></i> {{ carro.portas }} Portas</div>
         </div>
         <div class="spec-group">
-          <div class="spec-item"><i class="fas fa-tachometer-alt"></i> {{ car.mileage | number:'1.0-0' }} km</div>
-          <div class="spec-item"><i class="fas fa-cogs"></i> Automática</div>
+          <div class="spec-item"><i class="fas fa-tachometer-alt"></i> {{ getMileage() | number:'1.0-0' }} km</div>
+          <div class="spec-item"><i class="fas fa-cogs"></i> {{ getTransmission() }}</div>
         </div>
         <div class="spec-group">
-          <div class="spec-item"><i class="fas fa-users"></i> {{ car.seats }} Lugares</div>
+          <div class="spec-item"><i class="fas fa-id-card"></i> Placa: {{ carro.placa }}</div>
           <div class="spec-item"><i class="fas fa-snowflake"></i> Ar Condicionado</div>
         </div>
       </div>
 
       <div class="car-description">
         <h3>Descrição</h3>
-        <p>{{ car.description }}</p>
+        <p>{{ getDescription() }}</p>
       </div>
 
       <div class="car-options-card">
         <div class="options-toggle">
-          <button [class.active]="currentOption === 'aluguel'" (click)="currentOption = 'aluguel'">Aluguel</button>
-          <button [class.active]="currentOption === 'compra'" (click)="currentOption = 'compra'">Compra</button>
+          <button [class.active]="currentOption === 'aluguel'"
+                  (click)="currentOption = 'aluguel'"
+                  [disabled]="!carro.disponivelParaAluguel"
+                  class="toggle-btn">
+            Aluguel
+          </button>
+          <button [class.active]="currentOption === 'compra'"
+                  (click)="currentOption = 'compra'"
+                  [disabled]="!carro.disponivelParaVenda"
+                  class="toggle-btn">
+            Compra
+          </button>
         </div>
 
         <ng-container *ngIf="currentOption === 'aluguel'">
           <h3>Opções de Aluguel</h3>
           <div class="form-group">
             <label for="pickupDate">Data de Retirada</label>
-            <input type="date" id="pickupDate" [(ngModel)]="rentalDates.pickup" (change)="calculateTotalRental()">
+            <div class="date-input-wrapper">
+              <input type="date" id="pickupDate" [(ngModel)]="rentalDates.pickup" (change)="calculateTotalRental()">
+              <i class="fas fa-calendar-alt date-icon"></i>
+            </div>
           </div>
+
           <div class="form-group">
             <label for="returnDate">Data de Devolução</label>
-            <input type="date" id="returnDate" [(ngModel)]="rentalDates.return" (change)="calculateTotalRental()">
+            <div class="date-input-wrapper">
+              <input type="date" id="returnDate" [(ngModel)]="rentalDates.return" (change)="calculateTotalRental()">
+              <i class="fas fa-calendar-alt date-icon"></i>
+            </div>
           </div>
+
+          <div class="divider"></div>
+
           <div class="total-estimate">
             <span>Total Estimado ({{ rentalDays }} dias):</span>
-            <span>R$ {{ totalRentalPrice | number:'1.2-2' }}</span>
+            <span class="total-price">R$ {{ totalRentalPrice | number:'1.2-2' }}</span>
           </div>
-          <button class="action-btn primary-btn" (click)="rentCar()">Alugar Este Carro</button>
+
+          <button class="action-btn primary-btn" (click)="rentCar()">
+            Alugar Este Carro
+          </button>
         </ng-container>
 
-        <ng-container *ngIf="currentOption === 'compra'">
+        <ng-container *ngIf="currentOption === 'compra' && carro.disponivelParaVenda">
           <h3>Opções de Compra</h3>
-          <p>Interessado em comprar este veículo? Entre em contato para mais informações e para agendar uma visita.</p>
-          <button class="action-btn secondary-btn" (click)="buyCar()">Tenho Interesse</button>
+
+          <div class="opcoes-compra-lista">
+            <div class="opcao-item">
+              <i class="fas fa-check-circle"></i>
+              <span>💰 Financiamento Disponível</span>
+            </div>
+            <div class="opcao-item">
+              <i class="fas fa-check-circle"></i>
+              <span>🚗 Agende um Test Drive</span>
+            </div>
+          </div>
+
+          <p class="compra-descricao">
+            Interessado em comprar este veículo? Entre em contato para mais informações e para agendar uma visita.
+          </p>
+
+          <button class="action-btn secondary-btn" (click)="buyCar()">
+            Tenho Interesse
+          </button>
         </ng-container>
+
+        <!-- Mensagem se a opção não estiver disponível -->
+        <div *ngIf="(currentOption === 'aluguel' && !carro.disponivelParaAluguel) ||
+                (currentOption === 'compra' && !carro.disponivelParaVenda)"
+             class="unavailable-message">
+          <p>Esta opção não está disponível para este veículo no momento.</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="similar-cars-grid">
-    <div class="car-card" *ngFor="let similarCar of similarCars">
-      <img [src]="similarCar.mainImage" alt="{{ similarCar.name }} {{ similarCar.year }}"> <h3>{{ similarCar.name }} {{ similarCar.year }}</h3>
-      <div class="car-card-pricing">
-        <p class="rental-price">R$ {{ similarCar.rentalPrice | number:'1.2-2' }}/dia</p>
-        <p class="sale-price">R$ {{ similarCar.salePrice | number:'1.2-2' }}</p>
+  <div class="similar-cars-section" *ngIf="similarCars.length > 0">
+    <h3>Carros Similares que Você Pode Gostar</h3>
+    <div class="similar-cars-grid">
+      <div class="similar-car-card" *ngFor="let similarCar of similarCars">
+        <div class="similar-car-image">
+          <img [src]="similarCar.urlImagem || 'assets/placeholder-carro.jpg'"
+               [alt]="similarCar.marca + ' ' + similarCar.modelo"
+               onerror="this.src='assets/placeholder-carro.jpg'">
+        </div>
+
+        <div class="similar-car-info">
+          <h4>{{ similarCar.marca }} {{ similarCar.modelo }} {{ similarCar.ano }}</h4>
+          <div class="similar-car-pricing">
+            <p class="rental-price">
+              R$ {{ similarCar.precoAluguelPorDia | number:'1.2-2' }}/dia
+            </p>
+          </div>
+        </div>
+        <div class="similar-car-actions">
+          <a [routerLink]="['/carros', similarCar.id]"
+             (click)="scrollToTop()"
+             class="view-details-link"> Ver Detalhes </a>
+        </div>
       </div>
-      <a [routerLink]="['/carros', similarCar.id]" class="view-details-btn">Ver Detalhes</a>
     </div>
   </div>
 </div>
