@@ -1,0 +1,60 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="lock-icon-container">
+      <i class="fas fa-lock lock-icon"></i>
+    </div>
+
+    <h1>Bem-vindo de Volta!</h1>
+    <p class="subtitle">Entre na sua conta para continuar</p>
+
+    <div *ngIf="errorMessage" class="alert-message error">{{ errorMessage }}</div>
+    <div *ngIf="loading" class="alert-message loading">Processando...</div>
+
+    <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <div class="input-group">
+        <label for="loginEmail">Email</label> <div class="input-with-icon">
+        <i class="fas fa-envelope input-icon"></i>
+        <input type="email" id="loginEmail" formControlName="email" placeholder="seu@email.com"
+               [ngClass]="{'is-invalid': submitted && fLogin['email']!.errors}">
+      </div>
+      </div>
+
+      <div class="input-group">
+        <label for="loginPassword">Senha</label> <div class="input-with-icon">
+        <i class="fas fa-lock input-icon"></i>
+        <input type="password" id="loginPassword" formControlName="password" placeholder="••••••••"
+               [ngClass]="{'is-invalid': submitted && fLogin['password']!.errors}">
+        <i class="fas fa-eye input-icon password-toggle"></i> </div>
+      </div>
+
+      <div class="options-row">
+        <label class="checkbox-container">
+          <input type="checkbox" formControlName="rememberMe"> Lembrar-me
+          <span class="checkmark"></span>
+        </label>
+        <a href="#" class="forgot-password">Esqueceu a senha?</a>
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="loading">Entrar</button>
+    </form>
+
+    <div class="divider">
+      <span>Ou continue com</span> </div>
+
+    <div class="social-login">
+      <button type="button" class="btn-social google">
+        <i class="fab fa-google"></i> Google </button>
+      <button type="button" class="btn-social facebook">
+        <i class="fab fa-facebook-f"></i> Facebook </button>
+    </div>
+
+    <p class="recaptcha-info">
+      Não tem uma conta? <a [routerLink]="['/cadastro']" class="register-link">Cadastre-se Agora</a>
+    </p>
+
+    <p class="recaptcha-info small-text">
+      Protegido por reCAPTCHA e sujeito à <a href="#">Política de Privacidade</a> e <a href="#">Termos de Serviço</a> do Google.
+    </p>
+  </div>
+</div>

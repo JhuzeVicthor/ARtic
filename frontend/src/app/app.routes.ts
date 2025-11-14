@@ -7,6 +7,8 @@ import { CompraComponent } from './pages/compra/compra.component';
 import { ContatoComponent } from './pages/contato/contato.component';
 import { SobreComponent } from './pages/Sobre/sobre.component';
 import { CarroDetalhesComponent } from './pages/carro-detalhes/carro-detalhes.component';
+import {LoginComponent} from './pages/login/login.component';
+import {CadastroComponent} from './pages/cadastro/cadastro.component';
 
 export const routes: Routes = [
   // 1. ROTAS DE PÁGINAS ESTÁTICAS / LISTAS DE USUÁRIO FINAL
@@ -15,6 +17,8 @@ export const routes: Routes = [
   { path: 'sobre', component: SobreComponent },
   { path: 'aluguel', component: AluguelComponent },
   { path: 'compra', component: CompraComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'cadastro', component: CadastroComponent },
 
   // 2. ROTAS DE ADMINISTRAÇÃO (FIXAS - MAIOR PRIORIDADE)
   { path: 'carros/novo', component: CarroFormComponent },

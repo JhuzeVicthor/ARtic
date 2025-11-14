@@ -1,0 +1,369 @@
+@use "sass:color";
+
+// SUAS PALETAS DE CORES DEFINITIVAS
+$primary-color: #800000;      // Vinho/Bordô
+$secondary-color: #FF4500;    // Laranja
+$text-dark: #333333;          // Texto principal
+$text-light: #555555;         // Texto secundário
+$background-light: #f5f5f5;   // Background principal do wrapper
+$white: #ffffff;             // Usado para fundo do card e texto em botões primários
+$border-color: #e0e0e0;       // Cor de bordas e divisores
+$success-color: #28a745;      // Verde (Para botões de sucesso/comprar)
+$error-color: #dc3545;        // Vermelho (Para mensagens de erro)
+
+$shadow-base: 0 4px 15px rgba(0, 0, 0, 0.08);
+$border-radius-base: 8px;
+
+$google-red: #ea4335;
+$facebook-blue: #1877f2;
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: $primary-color;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: auto;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  background-color: $white;
+  border-radius: $border-radius-base;
+  box-shadow: $shadow-base;
+  text-align: center;
+  position: relative;
+  margin: 20px;
+}
+
+.lock-icon-container {
+  background-color: $primary-color;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  .lock-icon {
+    font-size: 30px;
+    color: $white;
+  }
+}
+
+
+h1 {
+  font-size: 1.8em;
+  color: $text-dark;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.subtitle {
+  color: $text-light;
+  font-size: 1em;
+  margin-bottom: 30px;
+}
+
+/* Alert Messages */
+.alert-message {
+  padding: 10px 15px;
+  border-radius: $border-radius-base;
+  margin-bottom: 20px;
+  font-size: 0.95em;
+  font-weight: 600;
+
+  &.error {
+    background-color: color.adjust($error-color, $lightness: 30%);
+    color: color.adjust($error-color, $lightness: -20%);
+    border: 1px solid $error-color;
+  }
+  &.loading {
+    background-color: color.adjust($primary-color, $lightness: 40%);
+    color: color.adjust($primary-color, $lightness: -20%);
+    border: 1px solid $primary-color;
+  }
+}
+
+/* Form Styles */
+.auth-form {
+  margin-top: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+
+  label {
+    display: block;
+    font-size: 0.95em;
+    color: $text-dark;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .input-with-icon {
+    position: relative;
+
+    .input-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $text-light;
+      font-size: 1.1em;
+      z-index: 1;
+    }
+
+    input {
+      width: 100%;
+      // Aumenta o padding esquerdo para acomodar o ícone
+      padding: 12px 15px 12px 45px;
+      border: 1px solid $border-color;
+      border-radius: $border-radius-base;
+      font-size: 1em;
+      color: $text-dark;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px color.adjust($primary-color, $alpha: -0.75);
+        outline: none;
+      }
+
+      &.is-invalid {
+        border-color: $error-color;
+      }
+    }
+
+    // Estilo específico para o ícone de mostrar/esconder senha
+    .password-toggle {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $text-light;
+      font-size: 1.1em;
+      cursor: pointer;
+      z-index: 1;
+    }
+  }
+
+  .invalid-feedback {
+    color: $error-color;
+    font-size: 0.85em;
+    margin-top: 5px;
+  }
+}
+
+.options-row {
+  margin-bottom: 25px;
+  font-size: 0.9em;
+
+  .checkbox-container {
+    color: $text-light;
+
+    input {
+      &:checked ~ .checkmark {
+        background-color: $primary-color;
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  .forgot-password {
+    color: $primary-color;
+    font-weight: 500;
+  }
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background-color: $primary-color;
+  color: $white;
+  border: none;
+  border-radius: $border-radius-base;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 30px;
+
+  &:hover {
+    background-color: color.adjust($primary-color, $lightness: -10%);
+  }
+
+  &:disabled {
+    background-color: color.adjust($primary-color, $lightness: 20%);
+    cursor: not-allowed;
+  }
+}
+
+/* Botão Secundário (Cadastre-se Agora) */
+.btn-secondary {
+  width: 100%;
+  padding: 12px;
+  background-color: $secondary-color;
+  color: $white;
+  border: none;
+  border-radius: $border-radius-base;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+
+  &:hover {
+    background-color: color.adjust($secondary-color, $lightness: -10%);
+  }
+}
+
+// Divider
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: $text-light;
+  margin: 25px 0;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &:not(:empty)::before {
+    margin-right: 1em;
+  }
+
+  &:not(:empty)::after {
+    margin-left: 1em;
+  }
+
+  span {
+    padding: 0 10px;
+    font-weight: 500;
+    color: $text-light;
+    font-size: 0.95em;
+  }
+}
+
+// Social Login
+.social-login {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 30px;
+
+  .btn-social {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base;
+    background-color: $white;
+    color: $text-dark;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
+
+    &:hover {
+      background-color: color.adjust($background-light, $lightness: -2%);
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+
+    &.google i {
+      color: $google-red;
+    }
+    &.facebook i {
+      color: $facebook-blue;
+    }
+  }
+}
+
+// ... (seu CSS existente) ...
+
+.recaptcha-info {
+  font-size: 0.9em;
+  color: $text-light;
+  margin-top: 20px;
+
+  // Estilo para links genéricos dentro de recaptcha-info
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 400; // Pode ser 400 ou 500 para links de política
+    cursor: pointer; // Garante o cursor de mão para todos os links
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // Estilo ESPECÍFICO para o link de navegação entre login/cadastro
+  .auth-nav-link {
+    font-weight: 600; // Mantém a ênfase para este link
+    color: $primary-color; // Garante a cor
+    text-decoration: none; // Garante sem sublinhado por padrão
+    cursor: pointer; // Garante o cursor de mão
+
+    &:hover {
+      text-decoration: underline; // Adiciona sublinhado no hover
+    }
+  }
+
+  &.small-text {
+    font-size: 0.75em;
+    margin-top: 10px;
+    a {
+      font-weight: normal;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px;
+  }
+
+  .social-login {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+// Responsividade
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .social-login {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-social {
+    width: 100%;
+  }
+}

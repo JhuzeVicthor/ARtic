@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f40e532-421f-4b12-81cd-71c0b1e7c9bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/cadastro/cadastro.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/cadastro/cadastro.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/cadastro/cadastro.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/login/login.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/login/login.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/login/login.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/aluguel/aluguel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/aluguel/aluguel.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/aluguel/aluguel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/aluguel/aluguel.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-detalhes/carro-detalhes.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-detalhes/carro-detalhes.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-detalhes/carro-detalhes.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-detalhes/carro-detalhes.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/carro-detalhes/carro-detalhes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/carro-detalhes/carro-detalhes.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/compra/compra.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/compra/compra.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/compra/compra.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/compra/compra.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/compra/compra.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/compra/compra.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +47,8 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;Database connection parameters found&quot;,
+    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -128,7 +127,10 @@
       <workItem from="1762438399308" duration="6597000" />
       <workItem from="1762531704006" duration="610000" />
       <workItem from="1762776802038" duration="15519000" />
-      <workItem from="1762866839973" duration="19295000" />
+      <workItem from="1762866839973" duration="21118000" />
+      <workItem from="1763035820455" duration="10106000" />
+      <workItem from="1763052727015" duration="2796000" />
+      <workItem from="1763121744482" duration="12095000" />
     </task>
     <servers />
   </component>

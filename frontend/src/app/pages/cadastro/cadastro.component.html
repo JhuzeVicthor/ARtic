@@ -1,0 +1,100 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="lock-icon-container">
+      <i class="fas fa-user-plus lock-icon"></i> </div>
+
+    <h1>Crie sua Conta</h1>
+    <p class="subtitle">Cadastre-se para acessar nossos serviços</p>
+
+    <div *ngIf="error" class="alert-message error">{{ error }}</div>
+    <div *ngIf="loading" class="alert-message loading">Processando cadastro...</div>
+
+    <form class="auth-form" [formGroup]="cadastroForm"  (ngSubmit)="onSubmit()">
+
+      <div class="input-group">
+        <label for="fullName">Nome Completo</label>
+        <div class="input-with-icon">
+          <i class="fas fa-user input-icon"></i>
+          <input type="text" id="fullName" formControlName="fullName" placeholder="Seu nome completo"
+                 [ngClass]="{'is-invalid': submitted && fCadastro['fullName']!.errors}">
+        </div>
+        <div *ngIf="submitted && fCadastro['fullName']!.errors" class="invalid-feedback">
+          <div *ngIf="fCadastro['fullName']!.errors">Nome completo é obrigatório.</div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="registerEmail">Email</label>
+        <div class="input-with-icon">
+          <i class="fas fa-envelope input-icon"></i>
+          <input type="email" id="registerEmail" formControlName="email" placeholder="seu@email.com"
+                 [ngClass]="{'is-invalid': submitted && fCadastro['email']!.errors}">
+        </div>
+        <div *ngIf="submitted && fCadastro['email']!.errors" class="invalid-feedback">
+          <div *ngIf="fCadastro['email']!.errors">Email é obrigatório.</div>
+          <div *ngIf="fCadastro['email']!.errors">Email inválido.</div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="registerPassword">Senha</label>
+        <div class="input-with-icon">
+          <i class="fas fa-lock input-icon"></i>
+          <input type="password" id="registerPassword" formControlName="password" placeholder="Mínimo 6 caracteres"
+                 [ngClass]="{'is-invalid': submitted && fCadastro['password']!.errors}">
+          <i class="fas fa-eye input-icon password-toggle"></i>
+        </div>
+        <div *ngIf="submitted && fCadastro['password']!.errors" class="invalid-feedback">
+          <div *ngIf="fCadastro['password']!.errors">Senha é obrigatória.</div>
+          <div *ngIf="fCadastro['password']!.errors">Mínimo de 6 caracteres.</div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="confirmPassword">Confirme a Senha</label>
+        <div class="input-with-icon">
+          <i class="fas fa-lock input-icon"></i>
+          <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Repita a senha"
+                 [ngClass]="{'is-invalid': submitted && fCadastro['confirmPassword']!.errors || (submitted && fCadastro['mismatch']!.errors)}">
+        </div>
+        <div *ngIf="submitted && fCadastro['mismatch']!.errors" class="invalid-feedback">
+          As senhas não coincidem.
+        </div>
+      </div>
+
+      <div class="options-row terms-row">
+        <label class="checkbox-container">
+          <input type="checkbox" formControlName="termsAccepted"> Aceito os <a href="#">termos de uso</a> e <a href="#">política de privacidade</a>
+          <span class="checkmark"></span>
+        </label>
+        <div *ngIf="submitted && fCadastro['termsAccepted']!.errors" class="invalid-feedback">
+          Você deve aceitar os termos.
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="loading">Cadastrar</button>
+    </form>
+
+
+    <div class="divider">
+      <span>Ou continue com</span>
+    </div>
+
+    <div class="social-login">
+      <button type="button" class="btn-social google">
+        <i class="fab fa-google"></i> Google
+      </button>
+      <button type="button" class="btn-social facebook">
+        <i class="fab fa-facebook-f"></i> Facebook
+      </button>
+    </div>
+
+    <p class="recaptcha-info">
+      Já tem uma conta? <a [routerLink]="['/login']" class="auth-nav-link">Faça Login</a>
+    </p>
+
+    <p class="recaptcha-info small-text">
+      Protegido por reCAPTCHA e sujeito à <a href="#">Política de Privacidade</a> e <a href="#">Termos de Serviço</a> do Google.
+    </p>
+  </div>
+</div>
