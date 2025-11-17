@@ -254,6 +254,70 @@ p {
   font-size: 1.2em;
 }
 
+.differentiators-section {
+  background-color: color.adjust($primary-color, $lightness: 60%, $saturation: -70%); /* Um rosa bem claro derivado do seu $primary-color */
+  padding: 60px 0; /* Adiciona padding acima e abaixo da seção */
+  text-align: center;
+  color: $text-dark; /* Garante que o texto seja legível */
+
+  h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: $primary-color; /* O título pode usar a cor primária */
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1.1em;
+    color: $text-light;
+    margin-bottom: 40px;
+  }
+
+  .container { /* Se você usar um container para limitar a largura do conteúdo */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Padding nas laterais para não grudar nas bordas */
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Layout responsivo em colunas */
+    gap: 30px; /* Espaçamento entre os itens */
+    margin-top: 30px;
+
+    .feature-item {
+      background-color: $white; /* Fundo branco para cada caixa de diferencial */
+      padding: 30px 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px); /* Efeito sutil no hover */
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      i {
+        font-size: 3.5em; /* Ícones grandes */
+        color: $primary-color; /* Cor dos ícones */
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 1.4em;
+        color: $text-dark;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 0.95em;
+        color: $text-light;
+        line-height: 1.6;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
 .why-choose-us-section {
   background-color: $white;
   padding: 60px 40px;

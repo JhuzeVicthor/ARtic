@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f40e532-421f-4b12-81cd-71c0b1e7c9bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/cadastro/cadastro.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/cadastro/cadastro.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/cadastro/cadastro.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/login/login.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/login/login.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/login/login.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/cadastro/cadastro.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/cadastro/cadastro.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +63,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -131,6 +131,8 @@
       <workItem from="1763035820455" duration="10106000" />
       <workItem from="1763052727015" duration="2796000" />
       <workItem from="1763121744482" duration="12095000" />
+      <workItem from="1763379732073" duration="98000" />
+      <workItem from="1763379882940" duration="5352000" />
     </task>
     <servers />
   </component>

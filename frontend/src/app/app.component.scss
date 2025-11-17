@@ -1,6 +1,6 @@
 @use "sass:color";
 
-$primary-color: #800000;
+$primary-color: #5a0000;
 $secondary-color: #FF4500;
 $text-dark: #333333;
 $text-light: #555555;
@@ -21,7 +21,6 @@ body {
   color: $white;
 
   .header-content {
-    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
