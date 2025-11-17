@@ -23,7 +23,6 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "_redirects",
               {
                 "glob": "**/*",
                 "input": "public"
