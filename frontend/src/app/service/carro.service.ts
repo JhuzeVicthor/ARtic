@@ -9,7 +9,7 @@ import {Carro} from '../interface/carro.model';
 })
 export class CarroService {
 
-  private apiUrl = 'http://localhost:8080/api/carros';
+  private apiUrl = 'http://54.232.167.186:8080/api/carros';
 
   constructor(private http: HttpClient) { }
 

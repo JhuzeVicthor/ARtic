@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f40e532-421f-4b12-81cd-71c0b1e7c9bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/3rdpartylicenses.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/ARtic-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARaluguel/Hyundai HB20 2023.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARaluguel/ToyotaCorolla2024.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARaluguel/fiat cronos 2024.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARaluguel/mobi2023preto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARaluguel/onix2021preto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARaluguel/renault kwid 2024.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARaluguel/volkswagen2021branco.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARcompra/bmw.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARcompra/fiat_mobi_vermelho.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARcompra/ford_ranger.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARcompra/gol_2021.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARcompra/jeep_renegade.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/CARcompra/onix_2024.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/SobrePage/Carros em um showroom moderno.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/SobrePage/Jhuze Victhor.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/assets/favicon_ARtic.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/main-DNGRRV65.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/polyfills-B6TNHZQ6.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/browser/styles-A6SD6OLP.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/artic-frontend/prerendered-routes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ARtic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ARtic.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/carro.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/carro.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +141,7 @@
       <workItem from="1763466539267" duration="5819000" />
       <workItem from="1763475298361" duration="11404000" />
       <workItem from="1763551268573" duration="6640000" />
-      <workItem from="1763561278434" duration="746000" />
+      <workItem from="1763561278434" duration="3399000" />
     </task>
     <servers />
   </component>
