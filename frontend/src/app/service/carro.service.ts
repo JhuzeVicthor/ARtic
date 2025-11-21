@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class CarroService {
 
-  private apiUrl = 'https://54.232.167.186:8080/api/carros';
+  private apiUrl = 'https://54.232.167.186:8443/api/carros';
 
   constructor(private http: HttpClient) { }
 

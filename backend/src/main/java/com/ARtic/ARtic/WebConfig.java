@@ -12,6 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins(
                         "https://articc.netlify.app",
+                        "https://https://54.232.167.186:8443",
                         "http://localhost:4200"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")

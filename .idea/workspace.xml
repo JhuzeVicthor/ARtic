@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f40e532-421f-4b12-81cd-71c0b1e7c9bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/environments/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ARtic/ARtic/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application-prod.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/service/carro.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/carro.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,7 +154,7 @@
       <workItem from="1763475298361" duration="11404000" />
       <workItem from="1763551268573" duration="6640000" />
       <workItem from="1763561278434" duration="10251000" />
-      <workItem from="1763760149263" duration="2585000" />
+      <workItem from="1763760149263" duration="5569000" />
     </task>
     <servers />
   </component>
