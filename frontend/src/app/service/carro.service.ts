@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Carro} from '../interface/carro.model';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import {Carro} from '../interface/carro.model';
 })
 export class CarroService {
 
-  private apiUrl = 'http://54.232.167.186:8080/api/carros';
+  private apiUrl = 'https://54.232.167.186:8080/api/carros';
 
   constructor(private http: HttpClient) { }
 
