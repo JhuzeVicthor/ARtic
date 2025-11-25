@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class CarroService {
 
-  private apiUrl = 'https://54.232.167.186:8443/api/carros';
+  private apiUrl = 'https://api.articc.com.br/api/carros';
 
   constructor(private http: HttpClient) { }
 
@@ -31,10 +31,6 @@ export class CarroService {
 
   createCarro(carro: Carro): Observable<Carro> {
     return this.http.post<Carro>(this.apiUrl, carro);
-  }
-
-  getCarrosAluguel(): Observable<Carro[]> {
-    return this.http.get<Carro[]>(`${this.apiUrl}?disponivelParaAluguel=true`);
   }
 
   updateCarro(id: number, carro: Carro): Observable<Carro> {
