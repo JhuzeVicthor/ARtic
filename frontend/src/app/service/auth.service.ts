@@ -1,24 +1,14 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 const API_BASE_URL = 'https://api.articc.com.br/api/auth';
 
-interface JwtResponse {
+export interface JwtResponse {
   token: string;
   type: string;
   id: number;
   email: string;
-  fullName: string;
-}
-
-interface AuthRequest {
-  email: string;
-  password: string;
-}
-
-interface RegisterRequest extends AuthRequest {
   fullName: string;
 }
 
@@ -27,8 +17,8 @@ export interface AuthRequest {
   password: string;
 }
 
-export interface JwtResponse {
-  token: string;
+export interface RegisterRequest extends AuthRequest {
+  fullName: string;
 }
 
 @Injectable({
@@ -43,7 +33,7 @@ export class AuthService {
   }
 
   login(data: AuthRequest): Observable<JwtResponse> {
-    return this.http.post(`${API_BASE_URL}/login`, data);
+    return this.http.post<JwtResponse>(`${API_BASE_URL}/login`, data);
   }
 
   setToken(token: string): void {
