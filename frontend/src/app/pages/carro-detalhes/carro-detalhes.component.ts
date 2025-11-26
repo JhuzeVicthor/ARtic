@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Carro } from '../../interface/carro.model';
 import { CarroService } from '../../service/carro.service';
 
@@ -40,7 +40,6 @@ export class CarroDetalhesComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.carId = Number(params.get('id'));
       this.loadCarDetails(this.carId);
-      this.loadSimilarCars();
     });
   }
 
@@ -63,11 +62,9 @@ export class CarroDetalhesComponent implements OnInit {
   }
 
   private setDefaultOptionBasedOnCarAvailability(): void {
-    // Se o carro não estiver disponível para aluguel, mostra compra por padrão
     if (!this.carro.disponivelParaAluguel && this.carro.disponivelParaVenda) {
       this.currentOption = 'compra';
     }
-    // Caso contrário, mantém aluguel como padrão
   }
 
 
@@ -116,6 +113,7 @@ export class CarroDetalhesComponent implements OnInit {
         this.mainCarImage = this.carro.urlImagem || 'assets/placeholder-carro.jpg';
         this.adjustDefaultOptionAfterCarLoad();
         console.log('Carro carregado:', this.carro);
+        this.loadSimilarCars();
       },
       error: (erro) => {
         console.error('Erro ao carregar detalhes do carro:', erro);
@@ -127,20 +125,36 @@ export class CarroDetalhesComponent implements OnInit {
 
 
   loadSimilarCars(): void {
-    this.carroService.getAllCarros(true, false).subscribe({
+    let disponivelParaAluguel = false;
+    let disponivelParaVenda = false;
+    let filterCondition: (carro: Carro) => boolean;
+
+    if (this.currentOption === 'aluguel') {
+      disponivelParaAluguel = true;
+      filterCondition = (c) => c.id !== this.carId && c.disponivelParaAluguel === true;
+    } else {
+      disponivelParaVenda = true;
+      filterCondition = (c) => c.id !== this.carId && c.disponivelParaVenda === true;
+    }
+
+    this.carroService.getAllCarros(disponivelParaAluguel, disponivelParaVenda).subscribe({
       next: (carros) => {
         this.similarCars = carros
-          .filter(c =>
-            c.id !== this.carId &&
-            c.disponivelParaAluguel === true
-          )
+          .filter(filterCondition)
           .slice(0, 3);
-        console.log('Carros similares carregados:', this.similarCars);
+        console.log(`Carros similares para ${this.currentOption} carregados:`, this.similarCars);
       },
       error: (erro) => {
         console.error('Erro ao carregar carros similares:', erro);
       }
     });
+  }
+
+  setCurrentOption(option: 'aluguel' | 'compra'): void {
+    if (this.currentOption !== option) {
+      this.currentOption = option;
+      this.loadSimilarCars();
+    }
   }
 
   // Métodos para gerar informações adicionais baseadas nos dados reais
@@ -183,24 +197,28 @@ export class CarroDetalhesComponent implements OnInit {
   }
 
   calculateTotalRental(): void {
-    if (this.rentalDates.pickup && this.rentalDates.return) {
-      const pickup = new Date(this.rentalDates.pickup);
-      const _return = new Date(this.rentalDates.return);
-
-      if (_return <= pickup) {
-        this.rentalDays = 0;
-        this.totalRentalPrice = 0;
-        alert('A data de devolução deve ser posterior à data de retirada.');
-        return;
-      }
-
-      const diffTime = Math.abs(_return.getTime() - pickup.getTime());
-      this.rentalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      this.totalRentalPrice = this.rentalDays * this.carro.precoAluguelPorDia;
-    } else {
+    const pickupDateString = this.rentalDates.pickup;
+    const returnDateString = this.rentalDates.return;
+    if (!pickupDateString || !returnDateString) {
       this.rentalDays = 0;
       this.totalRentalPrice = 0;
+      return;
     }
+
+    const pickup = new Date(pickupDateString);
+    const _return = new Date(returnDateString);
+    if (isNaN(pickup.getTime()) || isNaN(_return.getTime()) || _return <= pickup) {
+      this.rentalDays = 0;
+      this.totalRentalPrice = 0;
+      if (!isNaN(pickup.getTime()) && !isNaN(_return.getTime()) && _return <= pickup) {
+        alert('A data de devolução deve ser posterior à data de retirada.');
+      } else if (isNaN(pickup.getTime()) || isNaN(_return.getTime())) {}
+      return;
+    }
+
+    const diffTime = Math.abs(_return.getTime() - pickup.getTime());
+    this.rentalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    this.totalRentalPrice = this.rentalDays * this.carro.precoAluguelPorDia;
   }
 
   rentCar(): void {
@@ -208,13 +226,26 @@ export class CarroDetalhesComponent implements OnInit {
       alert('Por favor, selecione as datas de retirada e devolução válidas.');
       return;
     }
-
-    console.log(`Alugando ${this.carro.marca} ${this.carro.modelo} de ${this.rentalDates.pickup} a ${this.rentalDates.return}. Total: R$ ${this.totalRentalPrice}`);
-    alert(`Carro ${this.carro.marca} ${this.carro.modelo} alugado com sucesso!`);
+    const phoneNumber = '5582999906795';
+    const pickupDate = new Date(this.rentalDates.pickup).toLocaleDateString('pt-BR');
+    const returnDate = new Date(this.rentalDates.return).toLocaleDateString('pt-BR');
+    const formattedPrice = this.totalRentalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const message = `Olá! Tenho interesse em alugar o ${this.carro.marca} ${this.carro.modelo} (${this.carro.ano}).\n` +
+      `De: ${pickupDate}\n` +
+      `Até: ${returnDate}\n` +
+      `Pelo valor estimado de: ${formattedPrice}\n` +
+      `Por favor, me ajude a finalizar a reserva.`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   }
 
   buyCar(): void {
-    console.log(`Interesse em comprar ${this.carro.marca} ${this.carro.modelo}.`);
-    alert(`Obrigado pelo seu interesse em ${this.carro.marca} ${this.carro.modelo}! Entraremos em contato em breve.`);
+    const phoneNumber = '5582999906795';
+    const formattedPrice = this.carro.precoVenda.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const message = `Olá! Tenho interesse em comprar o ${this.carro.marca} ${this.carro.modelo} (${this.carro.ano}).\n` +
+      `Preço: ${formattedPrice}\n` +
+      `Gostaria de mais informações e de agendar uma visita/test drive.`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   }
 }

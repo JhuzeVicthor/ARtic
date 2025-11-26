@@ -53,14 +53,12 @@
       <div class="car-options-card">
         <div class="options-toggle">
           <button [class.active]="currentOption === 'aluguel'"
-                  (click)="currentOption = 'aluguel'"
-                  [disabled]="!carro.disponivelParaAluguel"
+                  (click)="setCurrentOption('aluguel')" [disabled]="!carro.disponivelParaAluguel"
                   class="toggle-btn">
             Aluguel
           </button>
           <button [class.active]="currentOption === 'compra'"
-                  (click)="currentOption = 'compra'"
-                  [disabled]="!carro.disponivelParaVenda"
+                  (click)="setCurrentOption('compra')" [disabled]="!carro.disponivelParaVenda"
                   class="toggle-btn">
             Compra
           </button>
