@@ -80,6 +80,7 @@
               <input type="date" id="returnDate" [(ngModel)]="rentalDates.return" (change)="calculateTotalRental()">
               <i class="fas fa-calendar-alt date-icon"></i>
             </div>
+            <p *ngIf="rentalDateError" class="error-message">{{ rentalDateError }}</p>
           </div>
 
           <div class="divider"></div>

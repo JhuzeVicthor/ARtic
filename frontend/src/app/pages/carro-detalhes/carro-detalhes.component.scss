@@ -421,6 +421,12 @@ $error-color: #dc3545;
   }
 }
 
+.error-message {
+  color: $primary-color;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
 // Responsividade
 @media (max-width: 992px) {
   .main-content-wrapper {

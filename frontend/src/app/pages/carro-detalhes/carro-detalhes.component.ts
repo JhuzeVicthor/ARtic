@@ -24,6 +24,8 @@ export class CarroDetalhesComponent implements OnInit {
     pickup: '',
     return: ''
   };
+
+  rentalDateError: string | null = null;
   rentalDays: number = 0;
   totalRentalPrice: number = 0;
 
@@ -199,6 +201,9 @@ export class CarroDetalhesComponent implements OnInit {
   calculateTotalRental(): void {
     const pickupDateString = this.rentalDates.pickup;
     const returnDateString = this.rentalDates.return;
+
+    this.rentalDateError = null;
+
     if (!pickupDateString || !returnDateString) {
       this.rentalDays = 0;
       this.totalRentalPrice = 0;
@@ -207,12 +212,18 @@ export class CarroDetalhesComponent implements OnInit {
 
     const pickup = new Date(pickupDateString);
     const _return = new Date(returnDateString);
-    if (isNaN(pickup.getTime()) || isNaN(_return.getTime()) || _return <= pickup) {
+
+    if (isNaN(pickup.getTime()) || isNaN(_return.getTime())) {
       this.rentalDays = 0;
       this.totalRentalPrice = 0;
-      if (!isNaN(pickup.getTime()) && !isNaN(_return.getTime()) && _return <= pickup) {
-        alert('A data de devolução deve ser posterior à data de retirada.');
-      } else if (isNaN(pickup.getTime()) || isNaN(_return.getTime())) {}
+      this.rentalDateError = 'Por favor, insira datas válidas.';
+      return;
+    }
+
+    if (_return <= pickup) {
+      this.rentalDays = 0;
+      this.totalRentalPrice = 0;
+      this.rentalDateError = 'A data de devolução deve ser posterior à data de retirada.';
       return;
     }
 
@@ -222,20 +233,37 @@ export class CarroDetalhesComponent implements OnInit {
   }
 
   rentCar(): void {
-    if (this.rentalDays === 0 || !this.rentalDates.pickup || !this.rentalDates.return) {
-      alert('Por favor, selecione as datas de retirada e devolução válidas.');
+    const pickupDateString = this.rentalDates.pickup;
+    const returnDateString = this.rentalDates.return;
+    if (!pickupDateString || !returnDateString) {
+      alert('Por favor, selecione as datas de retirada e devolução.');
       return;
     }
+
+    const pickup = new Date(pickupDateString);
+    const _return = new Date(returnDateString);
+    if (isNaN(pickup.getTime()) || isNaN(_return.getTime())) {
+      alert('Por favor, insira datas válidas.');
+      return;
+    }
+
+    if (_return <= pickup) {
+      alert('A data de devolução deve ser posterior à data de retirada.');
+      return;
+    }
+
     const phoneNumber = '5582999906795';
-    const pickupDate = new Date(this.rentalDates.pickup).toLocaleDateString('pt-BR');
-    const returnDate = new Date(this.rentalDates.return).toLocaleDateString('pt-BR');
+    const pickupDate = pickup.toLocaleDateString('pt-BR');
+    const returnDate = _return.toLocaleDateString('pt-BR');
     const formattedPrice = this.totalRentalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     const message = `Olá! Tenho interesse em alugar o ${this.carro.marca} ${this.carro.modelo} (${this.carro.ano}).\n` +
       `De: ${pickupDate}\n` +
       `Até: ${returnDate}\n` +
       `Pelo valor estimado de: ${formattedPrice}\n` +
       `Por favor, me ajude a finalizar a reserva.`;
+
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+
     window.open(whatsappUrl, '_blank');
   }
 
