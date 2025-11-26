@@ -2,32 +2,32 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService, AuthRequest, JwtResponse } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  // Certifique-se de que ReactiveFormsModule e RouterLink estão aqui
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup; // Formulário de login
-  submitted = false; // Flag para rastrear se o formulário foi submetido
-  loading = false;   // Flag para indicar estado de carregamento
-  errorMessage: string | null = null; // Mensagem de erro para exibir
+  loginForm!: FormGroup;
+  submitted = false;
+  loading = false;
+  errorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      rememberMe: [false]
     });
   }
 
@@ -36,36 +36,36 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.submitted = true; // Marca o formulário como submetido
-    this.loading = true;   // Ativa o estado de carregamento
-    this.errorMessage = null; // Limpa qualquer mensagem de erro anterior
+    this.submitted = true;
+    this.loading = true;
+    this.errorMessage = null;
 
-    // Para a execução se o formulário for inválido
     if (this.loginForm.invalid) {
-      this.loading = false; // Desativa o carregamento se houver erros de validação
+      this.loading = false;
       return;
     }
 
-    // Obtenha os valores do formulário
-    const { email, password, rememberMe } = this.loginForm.value;
-    console.log('Dados de Login:', { email, password, rememberMe });
+    const { email, password } = this.loginForm.value;
+    const requestData: AuthRequest = { email, password };
 
-    // Simulação de chamada de API para login (substitua isso pela sua lógica de autenticação real)
-    setTimeout(() => {
-      this.loading = false; // Desativa o carregamento
-
-      // Lógica de simulação:
-      if (email === 'teste@artic.com' && password === '123456') { // Exemplo de credenciais válidas
-        console.log('Login bem-sucedido!');
-        this.router.navigate(['/']); // Redireciona para a home ou dashboard após o login
-      } else {
-        this.errorMessage = 'Credenciais inválidas. Verifique seu email e senha.';
+    this.authService.login(requestData).subscribe({
+      next: (response: JwtResponse) => {
+        this.loading = false;
+        this.authService.setToken(response.token);
+        console.log('Entrada bem-sucedida!', response.token);
+        this.router.navigateByUrl('/');
+      },
+      error: (err: any) => {
+        this.loading = false;
+        console.error('Erro ao Entrar', err);
+        this.errorMessage = err.error && err.error.message ? err.error.message
+          : 'Credenciais inválidas. Verifique seu email e senha.';
       }
-    }, 1500);
+    });
   }
 
-  // Método para navegar para a página de cadastro (se você tiver uma rota /cadastro)
   goToRegister(): void {
     this.router.navigate(['/cadastro']);
   }
+
 }

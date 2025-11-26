@@ -49,8 +49,7 @@ public class SecurityConfig {
                 .exceptionHandling(withDefaults())
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 );
         http.cors(withDefaults());
         return http.build();
